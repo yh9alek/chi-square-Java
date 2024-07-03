@@ -1,6 +1,7 @@
 package views;
 
 import controllers.Controlador;
+import helpers.EstiloFilas;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,8 @@ public class JDProyecto extends javax.swing.JDialog {
     public JDProyecto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        // Aplicar estilo de filas tipo Excel a la tabla
+        this.jtDatosBinarios.setDefaultRenderer(Object.class, new EstiloFilas());
     }
 
     /**
@@ -43,6 +46,13 @@ public class JDProyecto extends javax.swing.JDialog {
         txtNombreItem = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnCrearTabla = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtDatosBinarios = new javax.swing.JTable();
+        btnExcel = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cmbItem1 = new javax.swing.JComboBox<>();
+        cmbItem2 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -82,9 +92,9 @@ public class JDProyecto extends javax.swing.JDialog {
         txtInstancias.setBounds(100, 70, 70, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Instancias");
+        jLabel2.setText("TABLA BINARIA");
         background.add(jLabel2);
-        jLabel2.setBounds(100, 40, 80, 20);
+        jLabel2.setBounds(180, 40, 110, 20);
 
         btnLimpiarItems.setText("Limpiar Items");
         background.add(btnLimpiarItems);
@@ -112,17 +122,64 @@ public class JDProyecto extends javax.swing.JDialog {
         btnAgregar.setBounds(140, 120, 30, 30);
 
         btnCrearTabla.setBackground(new java.awt.Color(102, 102, 255));
+        btnCrearTabla.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCrearTabla.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearTabla.setText("Crear tabla binaria");
         btnCrearTabla.setEnabled(false);
         background.add(btnCrearTabla);
         btnCrearTabla.setBounds(20, 280, 150, 30);
 
+        jtDatosBinarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jtDatosBinarios.setFocusable(false);
+        jtDatosBinarios.setShowVerticalLines(true);
+        jtDatosBinarios.getTableHeader().setResizingAllowed(false);
+        jtDatosBinarios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jtDatosBinarios);
+
+        background.add(jScrollPane2);
+        jScrollPane2.setBounds(180, 70, 360, 240);
+
+        btnExcel.setBackground(new java.awt.Color(33, 163, 102));
+        btnExcel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExcel.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcel.setText("Cargar tabla Excel");
+        background.add(btnExcel);
+        btnExcel.setBounds(20, 320, 150, 30);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Instancias");
+        background.add(jLabel3);
+        jLabel3.setBounds(100, 40, 80, 20);
+
+        cmbItem1.setEnabled(false);
+        background.add(cmbItem1);
+        cmbItem1.setBounds(322, 320, 110, 30);
+
+        cmbItem2.setEnabled(false);
+        background.add(cmbItem2);
+        cmbItem2.setBounds(442, 320, 100, 30);
+
+        jLabel4.setText("Seleccionar Items:");
+        background.add(jLabel4);
+        jLabel4.setBounds(210, 320, 100, 16);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,6 +234,7 @@ public class JDProyecto extends javax.swing.JDialog {
                 this.txtNombreItem.requestFocus();
                 if(this.jlItems.getModel().getSize() == Integer.parseInt(this.txtItems.getText())) {
                     this.btnCrearTabla.setEnabled(true);
+                    this.btnCrearTabla.requestFocus();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Aumenta el número de items para agregar más.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
@@ -231,11 +289,18 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JPanel background;
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnCrearTabla;
+    public javax.swing.JButton btnExcel;
     public javax.swing.JButton btnLimpiarItems;
+    public javax.swing.JComboBox<String> cmbItem1;
+    public javax.swing.JComboBox<String> cmbItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JList<String> jlItems;
+    public javax.swing.JTable jtDatosBinarios;
     public javax.swing.JTextField txtInstancias;
     public javax.swing.JTextField txtItems;
     public javax.swing.JTextField txtNombreItem;

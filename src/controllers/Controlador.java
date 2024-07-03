@@ -1,17 +1,24 @@
 package controllers;
 
+import helpers.Excel;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.KeyboardFocusManager;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
 import views.JDProyecto;
 
 /**
@@ -37,6 +44,8 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.btnAgregar.addActionListener(this);
         this.formulario.btnCrearTabla.addMouseListener(this);
         this.formulario.btnCrearTabla.addActionListener(this);
+        this.formulario.btnExcel.addMouseListener(this);
+        this.formulario.btnExcel.addActionListener(this);
     }
     
     // Iniciar el formulario
@@ -137,6 +146,9 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         if(e.getSource() == this.formulario.btnCrearTabla) {
             this.formulario.btnCrearTabla.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
+        if(e.getSource() == this.formulario.btnExcel) {
+            this.formulario.btnExcel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
     }
 
     @Override
@@ -176,7 +188,40 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             this.formulario.txtNombreItem.setText("Nombre Item");
             this.formulario.jlItems.setModel(new DefaultListModel<>());
             this.formulario.btnCrearTabla.setEnabled(false);
+            this.formulario.jtDatosBinarios.setModel(new DefaultTableModel());
             this.formulario.txtNombreItem.requestFocus();
+        }
+        if(e.getSource() == this.formulario.btnCrearTabla) {
+            int numeroItems = Integer.parseInt(this.formulario.txtItems.getText());
+            int numeroInstancias = Integer.parseInt(this.formulario.txtInstancias.getText());
+            
+            if(this.formulario.jlItems.getModel().getSize() < numeroItems) {
+                JOptionPane.showMessageDialog(this.formulario, "Faltan items por ingresar.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
+            String[] items = new String[numeroItems];
+            String[][] datos = new String[numeroInstancias][numeroItems];
+            
+            for(int i = 0; i < numeroItems; i++) {
+                items[i] = this.formulario.jlItems.getModel().getElementAt(i);
+            }
+            for(int i = 0; i < numeroInstancias; i++) {
+                for(int j = 0; j < numeroItems; j++) {
+                   datos[i][j] = String.valueOf((int)(Math.random() * 2));
+                }
+            }
+            
+            DefaultTableModel model = new DefaultTableModel(datos, items);
+            this.formulario.jtDatosBinarios.setModel(model);
+            this.formulario.revalidate();
+            this.formulario.repaint();
+        }
+        if(e.getSource() == this.formulario.btnExcel) {
+            this.formulario.jtDatosBinarios.setModel(Excel.cargar(formulario));
+            if(this.formulario.jtDatosBinarios.getModel() == null) {
+                return;
+            }      
         }
     }
 }
