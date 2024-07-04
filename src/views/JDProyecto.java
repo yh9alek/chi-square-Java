@@ -2,8 +2,17 @@ package views;
 
 import controllers.Controlador;
 import helpers.EstiloFilas;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,6 +33,20 @@ public class JDProyecto extends javax.swing.JDialog {
         initComponents();
         // Aplicar estilo de filas tipo Excel a la tabla
         this.jtDatosBinarios.setDefaultRenderer(Object.class, new EstiloFilas());
+        JTableHeader header = this.jtContingencia.getTableHeader();
+        header.setDefaultRenderer(new TableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                                                           boolean isSelected, boolean hasFocus, int row, int column) {
+                JLabel label = new JLabel(value.toString());
+                label.setOpaque(true);
+                label.setBackground(new Color(0xCCCCFF));
+                label.setForeground(new Color(0xCCCCFF));
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                label.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+                return label;
+            }
+        });
     }
 
     /**
@@ -52,6 +75,9 @@ public class JDProyecto extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         cmbItem1 = new javax.swing.JComboBox<>();
         cmbItem2 = new javax.swing.JComboBox<>();
+        lblSeleccion = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtContingencia = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -62,6 +88,7 @@ public class JDProyecto extends javax.swing.JDialog {
         });
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setFocusable(false);
         background.setLayout(null);
 
         txtItems.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -92,11 +119,11 @@ public class JDProyecto extends javax.swing.JDialog {
         txtInstancias.setBounds(100, 70, 70, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("TABLA BINARIA");
+        jLabel2.setText("TABLA DE CONTINGENCIA");
         background.add(jLabel2);
-        jLabel2.setBounds(180, 40, 110, 20);
+        jLabel2.setBounds(560, 40, 180, 20);
 
-        btnLimpiarItems.setText("Limpiar Items");
+        btnLimpiarItems.setText("Limpiar Datos");
         background.add(btnLimpiarItems);
         btnLimpiarItems.setBounds(20, 240, 150, 30);
 
@@ -163,27 +190,58 @@ public class JDProyecto extends javax.swing.JDialog {
 
         cmbItem1.setEnabled(false);
         background.add(cmbItem1);
-        cmbItem1.setBounds(322, 320, 110, 30);
+        cmbItem1.setBounds(330, 320, 100, 30);
 
         cmbItem2.setEnabled(false);
         background.add(cmbItem2);
-        cmbItem2.setBounds(442, 320, 100, 30);
+        cmbItem2.setBounds(440, 320, 100, 30);
 
-        jLabel4.setText("Seleccionar Items:");
+        lblSeleccion.setText("Seleccionar Items:");
+        lblSeleccion.setEnabled(false);
+        background.add(lblSeleccion);
+        lblSeleccion.setBounds(220, 325, 100, 16);
+
+        jtContingencia.setBackground(new java.awt.Color(204, 204, 255));
+        jtContingencia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jtContingencia.setFocusable(false);
+        jtContingencia.setGridColor(new java.awt.Color(255, 255, 255));
+        jtContingencia.setRowSelectionAllowed(false);
+        jtContingencia.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        jtContingencia.setShowHorizontalLines(true);
+        jtContingencia.setShowVerticalLines(true);
+        jtContingencia.getTableHeader().setResizingAllowed(false);
+        jtContingencia.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jtContingencia);
+
+        background.add(jScrollPane3);
+        jScrollPane3.setBounds(560, 70, 240, 110);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("TABLA BINARIA");
         background.add(jLabel4);
-        jLabel4.setBounds(210, 320, 100, 16);
+        jLabel4.setBounds(180, 40, 110, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 160, Short.MAX_VALUE))
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
         );
 
         pack();
@@ -299,8 +357,11 @@ public class JDProyecto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JList<String> jlItems;
+    public javax.swing.JTable jtContingencia;
     public javax.swing.JTable jtDatosBinarios;
+    public javax.swing.JLabel lblSeleccion;
     public javax.swing.JTextField txtInstancias;
     public javax.swing.JTextField txtItems;
     public javax.swing.JTextField txtNombreItem;

@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
@@ -21,7 +22,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Excel {
     public static DefaultTableModel cargar(JDialog formulario) {
         DefaultTableModel tableModel = new DefaultTableModel();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Excel", "csv", "xls", "xlsx");
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
         int result = fileChooser.showOpenDialog(formulario);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
@@ -58,7 +61,8 @@ public class Excel {
                     for (int j = 0; j < row.getLastCellNum(); j++) {
                         Cell cell = row.getCell(j);
                         if (cell != null) {
-                            rowData[j] = (int)cell.getNumericCellValue();
+                            try { rowData[j] = (int)cell.getNumericCellValue();}
+                            catch(Exception err) {}
                         }
                     }
                     tableModel.addRow(rowData);
