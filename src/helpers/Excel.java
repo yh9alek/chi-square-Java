@@ -18,8 +18,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /**
  *
  * @author yh9pl
+ * Clase para cargar archivos de Excel
  */
 public class Excel {
+    // Método para cargar el modelo de datos a la tabla binaria
     public static DefaultTableModel cargar(JDialog formulario) {
         DefaultTableModel tableModel = new DefaultTableModel();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Excel", "csv", "xls", "xlsx");
@@ -40,7 +42,8 @@ public class Excel {
         }
         return tableModel;
     }
-
+    
+    // Método necesario para leer las celdas de Excel y cargar los valores en un modelo de datos
     private static DefaultTableModel loadSheetData(Sheet sheet) {
         DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.setRowCount(0);

@@ -53,7 +53,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
     // Iniciar el formulario
     public void iniciarVista() {
         this.formulario.setTitle("Reglas Asociación");
-        this.formulario.setSize(911, 600);
+        this.formulario.setSize(1084, 600);
         this.formulario.setLocationRelativeTo(null);
         this.formulario.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.formulario.show();
@@ -108,6 +108,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.cf8.setText("0%");
     }
     
+    // Cargar los nombres de los items
     private void cargarNombreItems() {
         String item1 = this.formulario.cmbItem1.getSelectedItem().toString();
         String item2 = this.formulario.cmbItem2.getSelectedItem().toString();
@@ -127,6 +128,56 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.lbl26.setText(item2);
         this.formulario.lbl27.setText(item2);
         this.formulario.lbl28.setText(item2);
+    }
+    
+    private void calcularDependencia(String item1, String item2, String[][] modelo) {
+        DefaultTableModel modeloDependencia = null;
+        
+        System.out.println(modelo[1][1]);
+        System.out.println(modelo[1][3]);
+        System.out.println(modelo[3][1]);
+        System.out.println(modelo[3][3]);
+        
+        float total = Float.parseFloat(modelo[3][3]);
+        float totalV = Float.parseFloat(modelo[3][1]);
+        float totalV2 = Float.parseFloat(modelo[3][2]);
+        float totalH = Float.parseFloat(modelo[1][3]);
+        float totalH2 = Float.parseFloat(modelo[2][3]);
+        float valor11 = Float.parseFloat(modelo[1][1]);
+        float valor12 = Float.parseFloat(modelo[1][2]);
+        float valor21 = Float.parseFloat(modelo[2][1]);
+        float valor22 = Float.parseFloat(modelo[2][2]);
+        
+        float one = (valor11 / total) / ((totalH / total) * (totalV / total));
+        float two = (valor12 / total) / ((totalH / total) * (totalV2 / total));
+        float three = (valor21 / total) / ((totalH2 / total) * (totalV / total));
+        float four = (valor22 / total) / ((totalH2 / total) * (totalV2 / total));
+        
+        // Crear el TableModel para la tabla de contingencia
+        String[] nombresColumnas = new String[] {"", "", ""};
+        String[][] datosDependencia = new String[3][3];
+
+        datosDependencia[0][0] = "";
+        datosDependencia[0][1] = item2;
+        datosDependencia[0][2] = "~ " + item2;
+
+        datosDependencia[1][0] = item1;
+        datosDependencia[1][1] = String.valueOf(one);
+        datosDependencia[1][2] = String.valueOf(two);
+        datosDependencia[2][0] = "~ " + item1;
+        datosDependencia[2][1] = String.valueOf(three);
+        datosDependencia[2][2] = String.valueOf(four);
+        
+        modeloDependencia = new DefaultTableModel(datosDependencia, nombresColumnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que las celdas no sean editables
+            }
+        };
+        
+        this.formulario.jtDependencia.setModel(modeloDependencia);
+        this.formulario.jtDependencia.revalidate();
+        this.formulario.jtDependencia.repaint();
     }
     
     private void calcularCbCf() {
@@ -164,11 +215,6 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             if (this.formulario.jtDatosBinarios.getColumnName(i).equals(item2)) {
                 indiceItem2 = i;
             }
-        }
-
-        if (indiceItem1 == -1 || indiceItem2 == -1) {
-            JOptionPane.showMessageDialog(this.formulario, "Ítems no encontrados.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
         }
 
         // Inicializar las frecuencias
@@ -225,8 +271,9 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 return false; // Hacer que las celdas no sean editables
             }
         };
-
         this.formulario.jtContingencia.setModel(modelContingencia);
+        this.calcularCbCf();
+        this.calcularDependencia(item1, item2, datosContingencia);
         this.formulario.jtContingencia.getTableHeader().repaint();
         this.formulario.jtContingencia.revalidate();
         this.formulario.jtContingencia.repaint();
@@ -239,8 +286,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             item1 = this.formulario.cmbItem1.getSelectedItem().toString();
             item2 = this.formulario.cmbItem2.getSelectedItem().toString();
             this.calcularContingencia(item1, item2);
-            this.calcularCbCf();
-        } catch(Exception err) { }
+        } catch(Exception err) { System.out.println(err);  }
     }
     
     // Manejar evento del focus entrante

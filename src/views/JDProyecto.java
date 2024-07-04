@@ -47,6 +47,20 @@ public class JDProyecto extends javax.swing.JDialog {
                 return label;
             }
         });
+        JTableHeader headerd = this.jtDependencia.getTableHeader();
+        headerd.setDefaultRenderer(new TableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                                                           boolean isSelected, boolean hasFocus, int row, int column) {
+                JLabel label = new JLabel(value.toString());
+                label.setOpaque(true);
+                label.setBackground(new Color(0xCCCCFF));
+                label.setForeground(new Color(0xCCCCFF));
+                label.setHorizontalAlignment(SwingConstants.CENTER);
+                label.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+                return label;
+            }
+        });
     }
 
     /**
@@ -143,6 +157,11 @@ public class JDProyecto extends javax.swing.JDialog {
         lbl28 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jtDependencia = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -183,9 +202,9 @@ public class JDProyecto extends javax.swing.JDialog {
         txtInstancias.setBounds(100, 70, 70, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("TABLA DE CONTINGENCIA");
+        jLabel2.setText("DEPENDENCIA");
         background.add(jLabel2);
-        jLabel2.setBounds(560, 40, 180, 20);
+        jLabel2.setBounds(850, 40, 180, 20);
 
         btnLimpiarItems.setText("Limpiar Datos");
         background.add(btnLimpiarItems);
@@ -301,15 +320,15 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel6.setText("cf");
         background.add(jLabel6);
-        jLabel6.setBounds(800, 190, 20, 16);
+        jLabel6.setBounds(790, 190, 20, 16);
 
         cf1.setText("0%");
         background.add(cf1);
-        cf1.setBounds(818, 190, 40, 16);
+        cf1.setBounds(807, 190, 40, 16);
 
         jLabel8.setText("cb");
         background.add(jLabel8);
-        jLabel8.setBounds(740, 190, 20, 16);
+        jLabel8.setBounds(730, 190, 20, 16);
 
         lbl11.setText("item1");
         background.add(lbl11);
@@ -325,7 +344,7 @@ public class JDProyecto extends javax.swing.JDialog {
 
         cb1.setText("0%");
         background.add(cb1);
-        cb1.setBounds(760, 190, 40, 16);
+        cb1.setBounds(750, 190, 40, 16);
 
         lbl12.setText("item1");
         background.add(lbl12);
@@ -345,35 +364,35 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel17.setText("cb");
         background.add(jLabel17);
-        jLabel17.setBounds(740, 210, 20, 16);
+        jLabel17.setBounds(730, 210, 20, 16);
 
         cb2.setText("0%");
         background.add(cb2);
-        cb2.setBounds(760, 210, 40, 16);
+        cb2.setBounds(750, 210, 40, 16);
 
         jLabel19.setText("cf");
         background.add(jLabel19);
-        jLabel19.setBounds(800, 210, 20, 16);
+        jLabel19.setBounds(790, 210, 20, 16);
 
         cf2.setText("0%");
         background.add(cf2);
-        cf2.setBounds(818, 210, 40, 16);
+        cf2.setBounds(807, 210, 40, 16);
 
         cf3.setText("0%");
         background.add(cf3);
-        cf3.setBounds(818, 230, 40, 16);
+        cf3.setBounds(807, 230, 40, 16);
 
         jLabel22.setText("cf");
         background.add(jLabel22);
-        jLabel22.setBounds(800, 230, 20, 16);
+        jLabel22.setBounds(790, 230, 20, 16);
 
         cb3.setText("0%");
         background.add(cb3);
-        cb3.setBounds(760, 230, 40, 16);
+        cb3.setBounds(750, 230, 40, 16);
 
         jLabel24.setText("cb");
         background.add(jLabel24);
-        jLabel24.setBounds(740, 230, 20, 16);
+        jLabel24.setBounds(730, 230, 20, 16);
 
         jLabel25.setText("=1");
         background.add(jLabel25);
@@ -393,19 +412,19 @@ public class JDProyecto extends javax.swing.JDialog {
 
         cf4.setText("0%");
         background.add(cf4);
-        cf4.setBounds(818, 250, 40, 16);
+        cf4.setBounds(807, 250, 40, 16);
 
         jLabel30.setText("cf");
         background.add(jLabel30);
-        jLabel30.setBounds(800, 250, 20, 16);
+        jLabel30.setBounds(790, 250, 20, 16);
 
         cb4.setText("0%");
         background.add(cb4);
-        cb4.setBounds(760, 250, 40, 16);
+        cb4.setBounds(750, 250, 40, 16);
 
         jLabel32.setText("cb");
         background.add(jLabel32);
-        jLabel32.setBounds(740, 250, 20, 16);
+        jLabel32.setBounds(730, 250, 20, 16);
 
         jLabel33.setText("=0");
         background.add(jLabel33);
@@ -425,19 +444,19 @@ public class JDProyecto extends javax.swing.JDialog {
 
         cf5.setText("0%");
         background.add(cf5);
-        cf5.setBounds(818, 275, 40, 16);
+        cf5.setBounds(807, 275, 40, 16);
 
         jLabel38.setText("cf");
         background.add(jLabel38);
-        jLabel38.setBounds(800, 275, 20, 16);
+        jLabel38.setBounds(790, 275, 20, 16);
 
         cb5.setText("0%");
         background.add(cb5);
-        cb5.setBounds(760, 275, 40, 16);
+        cb5.setBounds(750, 275, 40, 16);
 
         jLabel40.setText("cb");
         background.add(jLabel40);
-        jLabel40.setBounds(740, 275, 20, 16);
+        jLabel40.setBounds(730, 275, 20, 16);
 
         jLabel41.setText("=1");
         background.add(jLabel41);
@@ -473,23 +492,23 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel49.setText("cb");
         background.add(jLabel49);
-        jLabel49.setBounds(740, 295, 20, 16);
+        jLabel49.setBounds(730, 295, 20, 16);
 
         cb6.setText("0%");
         background.add(cb6);
-        cb6.setBounds(760, 295, 40, 16);
+        cb6.setBounds(750, 295, 40, 16);
 
         jLabel51.setText("cf");
         background.add(jLabel51);
-        jLabel51.setBounds(800, 295, 20, 16);
+        jLabel51.setBounds(790, 295, 20, 16);
 
         cf6.setText("0%");
         background.add(cf6);
-        cf6.setBounds(818, 295, 40, 16);
+        cf6.setBounds(807, 295, 40, 16);
 
         jLabel53.setText("cb");
         background.add(jLabel53);
-        jLabel53.setBounds(740, 315, 20, 16);
+        jLabel53.setBounds(730, 315, 20, 16);
 
         lbl27.setText("item2");
         background.add(lbl27);
@@ -497,11 +516,11 @@ public class JDProyecto extends javax.swing.JDialog {
 
         cb7.setText("0%");
         background.add(cb7);
-        cb7.setBounds(760, 315, 40, 16);
+        cb7.setBounds(750, 315, 40, 16);
 
         cf7.setText("0%");
         background.add(cf7);
-        cf7.setBounds(818, 315, 40, 16);
+        cf7.setBounds(807, 315, 40, 16);
 
         jLabel57.setText("=1");
         background.add(jLabel57);
@@ -517,19 +536,19 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel60.setText("cf");
         background.add(jLabel60);
-        jLabel60.setBounds(800, 315, 20, 16);
+        jLabel60.setBounds(790, 315, 20, 16);
 
         jLabel61.setText("cf");
         background.add(jLabel61);
-        jLabel61.setBounds(800, 335, 20, 16);
+        jLabel61.setBounds(790, 335, 20, 16);
 
         cb8.setText("0%");
         background.add(cb8);
-        cb8.setBounds(760, 335, 40, 16);
+        cb8.setBounds(750, 335, 40, 16);
 
         cf8.setText("0%");
         background.add(cf8);
-        cf8.setBounds(818, 335, 40, 16);
+        cf8.setBounds(807, 335, 40, 16);
 
         lbl18.setText("item1");
         background.add(lbl18);
@@ -549,13 +568,52 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel68.setText("cb");
         background.add(jLabel68);
-        jLabel68.setBounds(740, 335, 20, 16);
+        jLabel68.setBounds(730, 335, 20, 16);
+
+        jtDependencia.setBackground(new java.awt.Color(204, 204, 255));
+        jtDependencia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jtDependencia.setFocusable(false);
+        jtDependencia.setGridColor(new java.awt.Color(255, 255, 255));
+        jtDependencia.setRowSelectionAllowed(false);
+        jtDependencia.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        jtDependencia.setShowHorizontalLines(true);
+        jtDependencia.setShowVerticalLines(true);
+        jtDependencia.getTableHeader().setResizingAllowed(false);
+        jtDependencia.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(jtDependencia);
+
+        background.add(jScrollPane4);
+        jScrollPane4.setBounds(850, 70, 190, 110);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("TABLA DE CONTINGENCIA");
+        background.add(jLabel7);
+        jLabel7.setBounds(560, 40, 180, 20);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel9.setText("No comprar item1 aumenta la compra de item2");
+        background.add(jLabel9);
+        jLabel9.setBounds(850, 210, 250, 16);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel11.setText("Comprar item1 disminuye la compra de item2");
+        background.add(jLabel11);
+        jLabel11.setBounds(850, 190, 250, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1084, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -687,6 +745,7 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JComboBox<String> cmbItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -720,13 +779,17 @@ public class JDProyecto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JList<String> jlItems;
     public javax.swing.JTable jtContingencia;
     public javax.swing.JTable jtDatosBinarios;
+    public javax.swing.JTable jtDependencia;
     public javax.swing.JLabel lbl11;
     public javax.swing.JLabel lbl12;
     public javax.swing.JLabel lbl13;
