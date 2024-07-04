@@ -15,6 +15,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import views.JDProyecto;
@@ -23,7 +25,7 @@ import views.JDProyecto;
  *
  * @author yh9pl
  */
-public class Controlador implements MouseListener, FocusListener, ActionListener {
+public class Controlador implements MouseListener, FocusListener, ActionListener, TableModelListener {
     private JDProyecto formulario;
     public static DefaultListModel<String> listModel;
     
@@ -51,7 +53,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
     // Iniciar el formulario
     public void iniciarVista() {
         this.formulario.setTitle("Reglas Asociación");
-        this.formulario.setSize(836, 600);
+        this.formulario.setSize(911, 600);
         this.formulario.setLocationRelativeTo(null);
         this.formulario.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.formulario.show();
@@ -72,6 +74,82 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.jtDatosBinarios.setModel(new DefaultTableModel());
         this.formulario.jtContingencia.setModel(new DefaultTableModel());
         this.formulario.txtNombreItem.requestFocus();
+        this.formulario.lbl11.setText("item1");
+        this.formulario.lbl12.setText("item1");
+        this.formulario.lbl13.setText("item1");
+        this.formulario.lbl14.setText("item1");
+        this.formulario.lbl15.setText("item1");
+        this.formulario.lbl16.setText("item1");
+        this.formulario.lbl17.setText("item1");
+        this.formulario.lbl18.setText("item1");
+        this.formulario.lbl21.setText("item2");
+        this.formulario.lbl22.setText("item2");
+        this.formulario.lbl23.setText("item2");
+        this.formulario.lbl24.setText("item2");
+        this.formulario.lbl25.setText("item2");
+        this.formulario.lbl26.setText("item2");
+        this.formulario.lbl27.setText("item2");
+        this.formulario.lbl28.setText("item2");
+        this.formulario.cb1.setText("0%");
+        this.formulario.cb2.setText("0%");
+        this.formulario.cb3.setText("0%");
+        this.formulario.cb4.setText("0%");
+        this.formulario.cb5.setText("0%");
+        this.formulario.cb6.setText("0%");
+        this.formulario.cb7.setText("0%");
+        this.formulario.cb8.setText("0%");
+        this.formulario.cf1.setText("0%");
+        this.formulario.cf2.setText("0%");
+        this.formulario.cf3.setText("0%");
+        this.formulario.cf4.setText("0%");
+        this.formulario.cf5.setText("0%");
+        this.formulario.cf6.setText("0%");
+        this.formulario.cf7.setText("0%");
+        this.formulario.cf8.setText("0%");
+    }
+    
+    private void cargarNombreItems() {
+        String item1 = this.formulario.cmbItem1.getSelectedItem().toString();
+        String item2 = this.formulario.cmbItem2.getSelectedItem().toString();
+        this.formulario.lbl11.setText(item1);
+        this.formulario.lbl12.setText(item1);
+        this.formulario.lbl13.setText(item1);
+        this.formulario.lbl14.setText(item1);
+        this.formulario.lbl15.setText(item1);
+        this.formulario.lbl16.setText(item1);
+        this.formulario.lbl17.setText(item1);
+        this.formulario.lbl18.setText(item1);
+        this.formulario.lbl21.setText(item2);
+        this.formulario.lbl22.setText(item2);
+        this.formulario.lbl23.setText(item2);
+        this.formulario.lbl24.setText(item2);
+        this.formulario.lbl25.setText(item2);
+        this.formulario.lbl26.setText(item2);
+        this.formulario.lbl27.setText(item2);
+        this.formulario.lbl28.setText(item2);
+    }
+    
+    private void calcularCbCf() {
+        this.cargarNombreItems();
+        DefaultTableModel datos = (DefaultTableModel)this.formulario.jtContingencia.getModel();
+        // Calculos de cobertura
+        this.formulario.cb1.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 1)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb2.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 2)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb3.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 1)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb4.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 2)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb5.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 1)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb6.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 1)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb7.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 2)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        this.formulario.cb8.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 2)) / Float.parseFloat((String)datos.getValueAt(3, 3))) * 100))+"%");
+        // Calculos de confianza
+        this.formulario.cf1.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 1)) / Float.parseFloat((String)datos.getValueAt(1, 3)) * 100))+"%"));
+        this.formulario.cf2.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 2)) / Float.parseFloat((String)datos.getValueAt(1, 3)) * 100))+"%"));
+        this.formulario.cf3.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 1)) / Float.parseFloat((String)datos.getValueAt(2, 3)) * 100))+"%"));
+        this.formulario.cf4.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 2)) / Float.parseFloat((String)datos.getValueAt(2, 3)) * 100))+"%"));
+        this.formulario.cf5.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 1)) / Float.parseFloat((String)datos.getValueAt(3, 1)) * 100))+"%"));
+        this.formulario.cf6.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 1)) / Float.parseFloat((String)datos.getValueAt(3, 1)) * 100))+"%"));
+        this.formulario.cf7.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(1, 2)) / Float.parseFloat((String)datos.getValueAt(3, 2)) * 100))+"%"));
+        this.formulario.cf8.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 2)) / Float.parseFloat((String)datos.getValueAt(3, 2)) * 100))+"%"));
     }
     
     private void calcularContingencia(String item1, String item2) {
@@ -161,6 +239,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             item1 = this.formulario.cmbItem1.getSelectedItem().toString();
             item2 = this.formulario.cmbItem2.getSelectedItem().toString();
             this.calcularContingencia(item1, item2);
+            this.calcularCbCf();
         } catch(Exception err) { }
     }
     
@@ -326,6 +405,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             this.formulario.cmbItem2.setEnabled(true);
             this.formulario.cmbItem2.setSelectedIndex(1);
             this.formulario.lblSeleccion.setEnabled(true);
+            model.addTableModelListener(this);
             this.cargarContingencia();
             this.formulario.revalidate();
             this.formulario.repaint();
@@ -363,5 +443,10 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         if(e.getSource() == this.formulario.cmbItem2) {
             this.cargarContingencia();
         }
+    }
+
+    @Override
+    public void tableChanged(TableModelEvent e) {
+        this.cargarContingencia();
     }
 }

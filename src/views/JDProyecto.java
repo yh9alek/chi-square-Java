@@ -79,6 +79,70 @@ public class JDProyecto extends javax.swing.JDialog {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtContingencia = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cf1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lbl11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lbl21 = new javax.swing.JLabel();
+        cb1 = new javax.swing.JLabel();
+        lbl12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lbl22 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        cb2 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cf2 = new javax.swing.JLabel();
+        cf3 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        cb3 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        lbl23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        lbl13 = new javax.swing.JLabel();
+        cf4 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        cb4 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        lbl24 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        lbl14 = new javax.swing.JLabel();
+        cf5 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        cb5 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        lbl15 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        lbl25 = new javax.swing.JLabel();
+        lbl26 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        lbl16 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        cb6 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        cf6 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        lbl27 = new javax.swing.JLabel();
+        cb7 = new javax.swing.JLabel();
+        cf7 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        lbl17 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        cb8 = new javax.swing.JLabel();
+        cf8 = new javax.swing.JLabel();
+        lbl18 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        lbl28 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -231,13 +295,267 @@ public class JDProyecto extends javax.swing.JDialog {
         background.add(jLabel4);
         jLabel4.setBounds(180, 40, 110, 20);
 
+        jLabel5.setText("=1");
+        background.add(jLabel5);
+        jLabel5.setBounds(610, 190, 40, 16);
+
+        jLabel6.setText("cf");
+        background.add(jLabel6);
+        jLabel6.setBounds(800, 190, 20, 16);
+
+        cf1.setText("0%");
+        background.add(cf1);
+        cf1.setBounds(818, 190, 40, 16);
+
+        jLabel8.setText("cb");
+        background.add(jLabel8);
+        jLabel8.setBounds(740, 190, 20, 16);
+
+        lbl11.setText("item1");
+        background.add(lbl11);
+        lbl11.setBounds(560, 190, 40, 16);
+
+        jLabel10.setText("=1");
+        background.add(jLabel10);
+        jLabel10.setBounds(690, 190, 40, 16);
+
+        lbl21.setText("item2");
+        background.add(lbl21);
+        lbl21.setBounds(640, 190, 40, 16);
+
+        cb1.setText("0%");
+        background.add(cb1);
+        cb1.setBounds(760, 190, 40, 16);
+
+        lbl12.setText("item1");
+        background.add(lbl12);
+        lbl12.setBounds(560, 210, 40, 16);
+
+        jLabel14.setText("=1");
+        background.add(jLabel14);
+        jLabel14.setBounds(610, 210, 40, 16);
+
+        lbl22.setText("item2");
+        background.add(lbl22);
+        lbl22.setBounds(640, 210, 40, 16);
+
+        jLabel16.setText("=0");
+        background.add(jLabel16);
+        jLabel16.setBounds(690, 210, 40, 16);
+
+        jLabel17.setText("cb");
+        background.add(jLabel17);
+        jLabel17.setBounds(740, 210, 20, 16);
+
+        cb2.setText("0%");
+        background.add(cb2);
+        cb2.setBounds(760, 210, 40, 16);
+
+        jLabel19.setText("cf");
+        background.add(jLabel19);
+        jLabel19.setBounds(800, 210, 20, 16);
+
+        cf2.setText("0%");
+        background.add(cf2);
+        cf2.setBounds(818, 210, 40, 16);
+
+        cf3.setText("0%");
+        background.add(cf3);
+        cf3.setBounds(818, 230, 40, 16);
+
+        jLabel22.setText("cf");
+        background.add(jLabel22);
+        jLabel22.setBounds(800, 230, 20, 16);
+
+        cb3.setText("0%");
+        background.add(cb3);
+        cb3.setBounds(760, 230, 40, 16);
+
+        jLabel24.setText("cb");
+        background.add(jLabel24);
+        jLabel24.setBounds(740, 230, 20, 16);
+
+        jLabel25.setText("=1");
+        background.add(jLabel25);
+        jLabel25.setBounds(690, 230, 40, 16);
+
+        lbl23.setText("item2");
+        background.add(lbl23);
+        lbl23.setBounds(640, 230, 40, 16);
+
+        jLabel27.setText("=0");
+        background.add(jLabel27);
+        jLabel27.setBounds(610, 230, 40, 16);
+
+        lbl13.setText("item1");
+        background.add(lbl13);
+        lbl13.setBounds(560, 230, 40, 16);
+
+        cf4.setText("0%");
+        background.add(cf4);
+        cf4.setBounds(818, 250, 40, 16);
+
+        jLabel30.setText("cf");
+        background.add(jLabel30);
+        jLabel30.setBounds(800, 250, 20, 16);
+
+        cb4.setText("0%");
+        background.add(cb4);
+        cb4.setBounds(760, 250, 40, 16);
+
+        jLabel32.setText("cb");
+        background.add(jLabel32);
+        jLabel32.setBounds(740, 250, 20, 16);
+
+        jLabel33.setText("=0");
+        background.add(jLabel33);
+        jLabel33.setBounds(690, 250, 40, 16);
+
+        lbl24.setText("item2");
+        background.add(lbl24);
+        lbl24.setBounds(640, 250, 40, 16);
+
+        jLabel35.setText("=0");
+        background.add(jLabel35);
+        jLabel35.setBounds(610, 250, 40, 16);
+
+        lbl14.setText("item1");
+        background.add(lbl14);
+        lbl14.setBounds(560, 250, 40, 16);
+
+        cf5.setText("0%");
+        background.add(cf5);
+        cf5.setBounds(818, 275, 40, 16);
+
+        jLabel38.setText("cf");
+        background.add(jLabel38);
+        jLabel38.setBounds(800, 275, 20, 16);
+
+        cb5.setText("0%");
+        background.add(cb5);
+        cb5.setBounds(760, 275, 40, 16);
+
+        jLabel40.setText("cb");
+        background.add(jLabel40);
+        jLabel40.setBounds(740, 275, 20, 16);
+
+        jLabel41.setText("=1");
+        background.add(jLabel41);
+        jLabel41.setBounds(690, 275, 40, 16);
+
+        lbl15.setText("item1");
+        background.add(lbl15);
+        lbl15.setBounds(640, 275, 40, 16);
+
+        jLabel43.setText("=1");
+        background.add(jLabel43);
+        jLabel43.setBounds(610, 275, 40, 16);
+
+        lbl25.setText("item2");
+        background.add(lbl25);
+        lbl25.setBounds(560, 275, 40, 16);
+
+        lbl26.setText("item2");
+        background.add(lbl26);
+        lbl26.setBounds(560, 295, 40, 16);
+
+        jLabel46.setText("=1");
+        background.add(jLabel46);
+        jLabel46.setBounds(610, 295, 40, 16);
+
+        lbl16.setText("item1");
+        background.add(lbl16);
+        lbl16.setBounds(640, 295, 40, 16);
+
+        jLabel48.setText("=0");
+        background.add(jLabel48);
+        jLabel48.setBounds(690, 295, 40, 16);
+
+        jLabel49.setText("cb");
+        background.add(jLabel49);
+        jLabel49.setBounds(740, 295, 20, 16);
+
+        cb6.setText("0%");
+        background.add(cb6);
+        cb6.setBounds(760, 295, 40, 16);
+
+        jLabel51.setText("cf");
+        background.add(jLabel51);
+        jLabel51.setBounds(800, 295, 20, 16);
+
+        cf6.setText("0%");
+        background.add(cf6);
+        cf6.setBounds(818, 295, 40, 16);
+
+        jLabel53.setText("cb");
+        background.add(jLabel53);
+        jLabel53.setBounds(740, 315, 20, 16);
+
+        lbl27.setText("item2");
+        background.add(lbl27);
+        lbl27.setBounds(560, 315, 40, 16);
+
+        cb7.setText("0%");
+        background.add(cb7);
+        cb7.setBounds(760, 315, 40, 16);
+
+        cf7.setText("0%");
+        background.add(cf7);
+        cf7.setBounds(818, 315, 40, 16);
+
+        jLabel57.setText("=1");
+        background.add(jLabel57);
+        jLabel57.setBounds(690, 315, 40, 16);
+
+        lbl17.setText("item1");
+        background.add(lbl17);
+        lbl17.setBounds(640, 315, 40, 16);
+
+        jLabel59.setText("=0");
+        background.add(jLabel59);
+        jLabel59.setBounds(610, 315, 40, 16);
+
+        jLabel60.setText("cf");
+        background.add(jLabel60);
+        jLabel60.setBounds(800, 315, 20, 16);
+
+        jLabel61.setText("cf");
+        background.add(jLabel61);
+        jLabel61.setBounds(800, 335, 20, 16);
+
+        cb8.setText("0%");
+        background.add(cb8);
+        cb8.setBounds(760, 335, 40, 16);
+
+        cf8.setText("0%");
+        background.add(cf8);
+        cf8.setBounds(818, 335, 40, 16);
+
+        lbl18.setText("item1");
+        background.add(lbl18);
+        lbl18.setBounds(640, 335, 40, 16);
+
+        jLabel65.setText("=0");
+        background.add(jLabel65);
+        jLabel65.setBounds(610, 335, 40, 16);
+
+        lbl28.setText("item2");
+        background.add(lbl28);
+        lbl28.setBounds(560, 335, 40, 16);
+
+        jLabel67.setText("=0");
+        background.add(jLabel67);
+        jLabel67.setBounds(690, 335, 40, 16);
+
+        jLabel68.setText("cb");
+        background.add(jLabel68);
+        jLabel68.setBounds(740, 335, 20, 16);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,18 +667,82 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JButton btnCrearTabla;
     public javax.swing.JButton btnExcel;
     public javax.swing.JButton btnLimpiarItems;
+    public javax.swing.JLabel cb1;
+    public javax.swing.JLabel cb2;
+    public javax.swing.JLabel cb3;
+    public javax.swing.JLabel cb4;
+    public javax.swing.JLabel cb5;
+    public javax.swing.JLabel cb6;
+    public javax.swing.JLabel cb7;
+    public javax.swing.JLabel cb8;
+    public javax.swing.JLabel cf1;
+    public javax.swing.JLabel cf2;
+    public javax.swing.JLabel cf3;
+    public javax.swing.JLabel cf4;
+    public javax.swing.JLabel cf5;
+    public javax.swing.JLabel cf6;
+    public javax.swing.JLabel cf7;
+    public javax.swing.JLabel cf8;
     public javax.swing.JComboBox<String> cmbItem1;
     public javax.swing.JComboBox<String> cmbItem2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JList<String> jlItems;
     public javax.swing.JTable jtContingencia;
     public javax.swing.JTable jtDatosBinarios;
+    public javax.swing.JLabel lbl11;
+    public javax.swing.JLabel lbl12;
+    public javax.swing.JLabel lbl13;
+    public javax.swing.JLabel lbl14;
+    public javax.swing.JLabel lbl15;
+    public javax.swing.JLabel lbl16;
+    public javax.swing.JLabel lbl17;
+    public javax.swing.JLabel lbl18;
+    public javax.swing.JLabel lbl21;
+    public javax.swing.JLabel lbl22;
+    public javax.swing.JLabel lbl23;
+    public javax.swing.JLabel lbl24;
+    public javax.swing.JLabel lbl25;
+    public javax.swing.JLabel lbl26;
+    public javax.swing.JLabel lbl27;
+    public javax.swing.JLabel lbl28;
     public javax.swing.JLabel lblSeleccion;
     public javax.swing.JTextField txtInstancias;
     public javax.swing.JTextField txtItems;
