@@ -279,259 +279,259 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel5.setText("=1");
         background.add(jLabel5);
-        jLabel5.setBounds(610, 190, 40, 16);
+        jLabel5.setBounds(592, 190, 40, 16);
 
         jLabel6.setText("cf");
         background.add(jLabel6);
-        jLabel6.setBounds(790, 190, 20, 16);
+        jLabel6.setBounds(760, 190, 20, 16);
 
         cf1.setText("0%");
         background.add(cf1);
-        cf1.setBounds(807, 190, 40, 16);
+        cf1.setBounds(777, 190, 40, 16);
 
         jLabel8.setText("cb");
         background.add(jLabel8);
-        jLabel8.setBounds(730, 190, 20, 16);
+        jLabel8.setBounds(700, 190, 20, 16);
 
-        lbl11.setText("item1");
+        lbl11.setText("--");
         background.add(lbl11);
         lbl11.setBounds(560, 190, 40, 16);
 
         jLabel10.setText("=1");
         background.add(jLabel10);
-        jLabel10.setBounds(690, 190, 40, 16);
+        jLabel10.setBounds(662, 190, 40, 16);
 
-        lbl21.setText("item2");
+        lbl21.setText("--");
         background.add(lbl21);
-        lbl21.setBounds(640, 190, 40, 16);
+        lbl21.setBounds(630, 190, 40, 16);
 
         cb1.setText("0%");
         background.add(cb1);
-        cb1.setBounds(750, 190, 40, 16);
+        cb1.setBounds(720, 190, 40, 16);
 
-        lbl12.setText("item1");
+        lbl12.setText("--");
         background.add(lbl12);
         lbl12.setBounds(560, 210, 40, 16);
 
         jLabel14.setText("=1");
         background.add(jLabel14);
-        jLabel14.setBounds(610, 210, 40, 16);
+        jLabel14.setBounds(592, 210, 40, 16);
 
-        lbl22.setText("item2");
+        lbl22.setText("--");
         background.add(lbl22);
-        lbl22.setBounds(640, 210, 40, 16);
+        lbl22.setBounds(630, 210, 40, 16);
 
         jLabel16.setText("=0");
         background.add(jLabel16);
-        jLabel16.setBounds(690, 210, 40, 16);
+        jLabel16.setBounds(662, 210, 40, 16);
 
         jLabel17.setText("cb");
         background.add(jLabel17);
-        jLabel17.setBounds(730, 210, 20, 16);
+        jLabel17.setBounds(700, 210, 20, 16);
 
         cb2.setText("0%");
         background.add(cb2);
-        cb2.setBounds(750, 210, 40, 16);
+        cb2.setBounds(720, 210, 40, 16);
 
         jLabel19.setText("cf");
         background.add(jLabel19);
-        jLabel19.setBounds(790, 210, 20, 16);
+        jLabel19.setBounds(760, 210, 20, 16);
 
         cf2.setText("0%");
         background.add(cf2);
-        cf2.setBounds(807, 210, 40, 16);
+        cf2.setBounds(777, 210, 40, 16);
 
         cf3.setText("0%");
         background.add(cf3);
-        cf3.setBounds(807, 230, 40, 16);
+        cf3.setBounds(777, 230, 40, 16);
 
         jLabel22.setText("cf");
         background.add(jLabel22);
-        jLabel22.setBounds(790, 230, 20, 16);
+        jLabel22.setBounds(760, 230, 20, 16);
 
         cb3.setText("0%");
         background.add(cb3);
-        cb3.setBounds(750, 230, 40, 16);
+        cb3.setBounds(720, 230, 40, 16);
 
         jLabel24.setText("cb");
         background.add(jLabel24);
-        jLabel24.setBounds(730, 230, 20, 16);
+        jLabel24.setBounds(700, 230, 20, 16);
 
         jLabel25.setText("=1");
         background.add(jLabel25);
-        jLabel25.setBounds(690, 230, 40, 16);
+        jLabel25.setBounds(662, 230, 40, 16);
 
-        lbl23.setText("item2");
+        lbl23.setText("--");
         background.add(lbl23);
-        lbl23.setBounds(640, 230, 40, 16);
+        lbl23.setBounds(630, 230, 40, 16);
 
         jLabel27.setText("=0");
         background.add(jLabel27);
-        jLabel27.setBounds(610, 230, 40, 16);
+        jLabel27.setBounds(592, 230, 40, 16);
 
-        lbl13.setText("item1");
+        lbl13.setText("--");
         background.add(lbl13);
         lbl13.setBounds(560, 230, 40, 16);
 
         cf4.setText("0%");
         background.add(cf4);
-        cf4.setBounds(807, 250, 40, 16);
+        cf4.setBounds(777, 250, 40, 16);
 
         jLabel30.setText("cf");
         background.add(jLabel30);
-        jLabel30.setBounds(790, 250, 20, 16);
+        jLabel30.setBounds(760, 250, 20, 16);
 
         cb4.setText("0%");
         background.add(cb4);
-        cb4.setBounds(750, 250, 40, 16);
+        cb4.setBounds(720, 250, 40, 16);
 
         jLabel32.setText("cb");
         background.add(jLabel32);
-        jLabel32.setBounds(730, 250, 20, 16);
+        jLabel32.setBounds(700, 250, 20, 16);
 
         jLabel33.setText("=0");
         background.add(jLabel33);
-        jLabel33.setBounds(690, 250, 40, 16);
+        jLabel33.setBounds(662, 250, 40, 16);
 
-        lbl24.setText("item2");
+        lbl24.setText("--");
         background.add(lbl24);
-        lbl24.setBounds(640, 250, 40, 16);
+        lbl24.setBounds(630, 250, 40, 16);
 
         jLabel35.setText("=0");
         background.add(jLabel35);
-        jLabel35.setBounds(610, 250, 40, 16);
+        jLabel35.setBounds(592, 250, 40, 16);
 
-        lbl14.setText("item1");
+        lbl14.setText("--");
         background.add(lbl14);
         lbl14.setBounds(560, 250, 40, 16);
 
         cf5.setText("0%");
         background.add(cf5);
-        cf5.setBounds(807, 275, 40, 16);
+        cf5.setBounds(777, 275, 40, 16);
 
         jLabel38.setText("cf");
         background.add(jLabel38);
-        jLabel38.setBounds(790, 275, 20, 16);
+        jLabel38.setBounds(760, 275, 20, 16);
 
         cb5.setText("0%");
         background.add(cb5);
-        cb5.setBounds(750, 275, 40, 16);
+        cb5.setBounds(720, 275, 40, 16);
 
         jLabel40.setText("cb");
         background.add(jLabel40);
-        jLabel40.setBounds(730, 275, 20, 16);
+        jLabel40.setBounds(700, 275, 20, 16);
 
         jLabel41.setText("=1");
         background.add(jLabel41);
-        jLabel41.setBounds(690, 275, 40, 16);
+        jLabel41.setBounds(662, 275, 40, 16);
 
-        lbl15.setText("item1");
+        lbl15.setText("--");
         background.add(lbl15);
-        lbl15.setBounds(640, 275, 40, 16);
+        lbl15.setBounds(630, 275, 40, 16);
 
         jLabel43.setText("=1");
         background.add(jLabel43);
-        jLabel43.setBounds(610, 275, 40, 16);
+        jLabel43.setBounds(592, 275, 40, 16);
 
-        lbl25.setText("item2");
+        lbl25.setText("--");
         background.add(lbl25);
         lbl25.setBounds(560, 275, 40, 16);
 
-        lbl26.setText("item2");
+        lbl26.setText("--");
         background.add(lbl26);
         lbl26.setBounds(560, 295, 40, 16);
 
         jLabel46.setText("=1");
         background.add(jLabel46);
-        jLabel46.setBounds(610, 295, 40, 16);
+        jLabel46.setBounds(592, 295, 40, 16);
 
-        lbl16.setText("item1");
+        lbl16.setText("--");
         background.add(lbl16);
-        lbl16.setBounds(640, 295, 40, 16);
+        lbl16.setBounds(630, 295, 40, 16);
 
         jLabel48.setText("=0");
         background.add(jLabel48);
-        jLabel48.setBounds(690, 295, 40, 16);
+        jLabel48.setBounds(662, 295, 40, 16);
 
         jLabel49.setText("cb");
         background.add(jLabel49);
-        jLabel49.setBounds(730, 295, 20, 16);
+        jLabel49.setBounds(700, 295, 20, 16);
 
         cb6.setText("0%");
         background.add(cb6);
-        cb6.setBounds(750, 295, 40, 16);
+        cb6.setBounds(720, 295, 40, 16);
 
         jLabel51.setText("cf");
         background.add(jLabel51);
-        jLabel51.setBounds(790, 295, 20, 16);
+        jLabel51.setBounds(760, 295, 20, 16);
 
         cf6.setText("0%");
         background.add(cf6);
-        cf6.setBounds(807, 295, 40, 16);
+        cf6.setBounds(777, 295, 40, 16);
 
         jLabel53.setText("cb");
         background.add(jLabel53);
-        jLabel53.setBounds(730, 315, 20, 16);
+        jLabel53.setBounds(700, 315, 20, 16);
 
-        lbl27.setText("item2");
+        lbl27.setText("--");
         background.add(lbl27);
         lbl27.setBounds(560, 315, 40, 16);
 
         cb7.setText("0%");
         background.add(cb7);
-        cb7.setBounds(750, 315, 40, 16);
+        cb7.setBounds(720, 315, 40, 16);
 
         cf7.setText("0%");
         background.add(cf7);
-        cf7.setBounds(807, 315, 40, 16);
+        cf7.setBounds(777, 315, 40, 16);
 
         jLabel57.setText("=1");
         background.add(jLabel57);
-        jLabel57.setBounds(690, 315, 40, 16);
+        jLabel57.setBounds(662, 315, 40, 16);
 
-        lbl17.setText("item1");
+        lbl17.setText("--");
         background.add(lbl17);
-        lbl17.setBounds(640, 315, 40, 16);
+        lbl17.setBounds(630, 315, 40, 16);
 
         jLabel59.setText("=0");
         background.add(jLabel59);
-        jLabel59.setBounds(610, 315, 40, 16);
+        jLabel59.setBounds(592, 315, 40, 16);
 
         jLabel60.setText("cf");
         background.add(jLabel60);
-        jLabel60.setBounds(790, 315, 20, 16);
+        jLabel60.setBounds(760, 315, 20, 16);
 
         jLabel61.setText("cf");
         background.add(jLabel61);
-        jLabel61.setBounds(790, 335, 20, 16);
+        jLabel61.setBounds(760, 335, 20, 16);
 
         cb8.setText("0%");
         background.add(cb8);
-        cb8.setBounds(750, 335, 40, 16);
+        cb8.setBounds(720, 335, 40, 16);
 
         cf8.setText("0%");
         background.add(cf8);
-        cf8.setBounds(807, 335, 40, 16);
+        cf8.setBounds(777, 335, 40, 16);
 
-        lbl18.setText("item1");
+        lbl18.setText("--");
         background.add(lbl18);
-        lbl18.setBounds(640, 335, 40, 16);
+        lbl18.setBounds(630, 335, 40, 16);
 
         jLabel65.setText("=0");
         background.add(jLabel65);
-        jLabel65.setBounds(610, 335, 40, 16);
+        jLabel65.setBounds(592, 335, 40, 16);
 
-        lbl28.setText("item2");
+        lbl28.setText("--");
         background.add(lbl28);
         lbl28.setBounds(560, 335, 40, 16);
 
         jLabel67.setText("=0");
         background.add(jLabel67);
-        jLabel67.setBounds(690, 335, 40, 16);
+        jLabel67.setBounds(662, 335, 40, 16);
 
         jLabel68.setText("cb");
         background.add(jLabel68);
-        jLabel68.setBounds(730, 335, 20, 16);
+        jLabel68.setBounds(700, 335, 20, 16);
 
         jtDependencia.setBackground(new java.awt.Color(204, 204, 255));
         jtDependencia.setModel(new javax.swing.table.DefaultTableModel(

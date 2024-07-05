@@ -71,61 +71,64 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.cmbItem2.setModel(new DefaultComboBoxModel<>());
         this.formulario.jtDatosBinarios.setModel(new DefaultTableModel());
         this.formulario.jtContingencia.setModel(new DefaultTableModel());
+        this.formulario.jtDependencia.setModel(new DefaultTableModel());
         this.formulario.txtNombreItem.requestFocus();
-        this.formulario.lbl11.setText("item1");
-        this.formulario.lbl12.setText("item1");
-        this.formulario.lbl13.setText("item1");
-        this.formulario.lbl14.setText("item1");
-        this.formulario.lbl15.setText("item1");
-        this.formulario.lbl16.setText("item1");
-        this.formulario.lbl17.setText("item1");
-        this.formulario.lbl18.setText("item1");
-        this.formulario.lbl21.setText("item2");
-        this.formulario.lbl22.setText("item2");
-        this.formulario.lbl23.setText("item2");
-        this.formulario.lbl24.setText("item2");
-        this.formulario.lbl25.setText("item2");
-        this.formulario.lbl26.setText("item2");
-        this.formulario.lbl27.setText("item2");
-        this.formulario.lbl28.setText("item2");
-        this.formulario.cb1.setText("0%");
-        this.formulario.cb2.setText("0%");
-        this.formulario.cb3.setText("0%");
-        this.formulario.cb4.setText("0%");
-        this.formulario.cb5.setText("0%");
-        this.formulario.cb6.setText("0%");
-        this.formulario.cb7.setText("0%");
-        this.formulario.cb8.setText("0%");
-        this.formulario.cf1.setText("0%");
-        this.formulario.cf2.setText("0%");
-        this.formulario.cf3.setText("0%");
-        this.formulario.cf4.setText("0%");
-        this.formulario.cf5.setText("0%");
-        this.formulario.cf6.setText("0%");
-        this.formulario.cf7.setText("0%");
-        this.formulario.cf8.setText("0%");
+        this.formulario.lbl11.setText("--");
+        this.formulario.lbl12.setText("--");
+        this.formulario.lbl13.setText("--");
+        this.formulario.lbl14.setText("--");
+        this.formulario.lbl15.setText("--");
+        this.formulario.lbl16.setText("--");
+        this.formulario.lbl17.setText("--");
+        this.formulario.lbl18.setText("--");
+        this.formulario.lbl21.setText("--");
+        this.formulario.lbl22.setText("--");
+        this.formulario.lbl23.setText("--");
+        this.formulario.lbl24.setText("--");
+        this.formulario.lbl25.setText("--");
+        this.formulario.lbl26.setText("--");
+        this.formulario.lbl27.setText("--");
+        this.formulario.lbl28.setText("--");
+        this.formulario.cb1.setText("--%");
+        this.formulario.cb2.setText("--%");
+        this.formulario.cb3.setText("--%");
+        this.formulario.cb4.setText("--%");
+        this.formulario.cb5.setText("--%");
+        this.formulario.cb6.setText("--%");
+        this.formulario.cb7.setText("--%");
+        this.formulario.cb8.setText("--%");
+        this.formulario.cf1.setText("--%");
+        this.formulario.cf2.setText("--%");
+        this.formulario.cf3.setText("--%");
+        this.formulario.cf4.setText("--%");
+        this.formulario.cf5.setText("--%");
+        this.formulario.cf6.setText("--%");
+        this.formulario.cf7.setText("--%");
+        this.formulario.cf8.setText("--%");
+        this.formulario.lblComprar.setText("");
+        this.formulario.lblNoComprar.setText("");
     }
     
     // Cargar los nombres de los labels de items (cobertura y confianza)
     private void cargarNombreItems() {
         String item1 = this.formulario.cmbItem1.getSelectedItem().toString();
         String item2 = this.formulario.cmbItem2.getSelectedItem().toString();
-        this.formulario.lbl11.setText(item1);
-        this.formulario.lbl12.setText(item1);
-        this.formulario.lbl13.setText(item1);
-        this.formulario.lbl14.setText(item1);
-        this.formulario.lbl15.setText(item1);
-        this.formulario.lbl16.setText(item1);
-        this.formulario.lbl17.setText(item1);
-        this.formulario.lbl18.setText(item1);
-        this.formulario.lbl21.setText(item2);
-        this.formulario.lbl22.setText(item2);
-        this.formulario.lbl23.setText(item2);
-        this.formulario.lbl24.setText(item2);
-        this.formulario.lbl25.setText(item2);
-        this.formulario.lbl26.setText(item2);
-        this.formulario.lbl27.setText(item2);
-        this.formulario.lbl28.setText(item2);
+        this.formulario.lbl11.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl12.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl13.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl14.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl15.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl16.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl17.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl18.setText(Controlador.obtenerIniciales(item1));
+        this.formulario.lbl21.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl22.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl23.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl24.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl25.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl26.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl27.setText(Controlador.obtenerIniciales(item2));
+        this.formulario.lbl28.setText(Controlador.obtenerIniciales(item2));
     }
     
     // Método utilizado para calcular los valores de la tabla de factor de dependencia
@@ -157,7 +160,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         datosDependencia[0][1] = item2;
         datosDependencia[0][2] = "~ " + item2;
 
-        datosDependencia[1][0] = item1;
+        datosDependencia[1][0] = "   " + item1;
         datosDependencia[1][1] = String.format("%.3f", one);
         datosDependencia[1][2] = String.format("%.3f", two);
         datosDependencia[2][0] = "~ " + item1;
@@ -219,9 +222,11 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         for (int i = 0; i < this.formulario.jtDatosBinarios.getColumnCount(); i++) {
             if (this.formulario.jtDatosBinarios.getColumnName(i).equals(item1)) {
                 indiceItem1 = i;
+                item1 = Controlador.obtenerIniciales(item1);
             } 
             if (this.formulario.jtDatosBinarios.getColumnName(i).equals(item2)) {
                 indiceItem2 = i;
+                item2 = Controlador.obtenerIniciales(item2);
             }
         }
         
@@ -261,7 +266,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         datosContingencia[0][2] = "~ " + item2;
         datosContingencia[0][3] = "Total";
 
-        datosContingencia[1][0] = item1;
+        datosContingencia[1][0] = "   " + item1;
         datosContingencia[2][0] = "~ " + item1;
         datosContingencia[3][0] = "Total";
 
@@ -301,6 +306,23 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             item2 = this.formulario.cmbItem2.getModel().getSelectedItem().toString();
             this.calcularContingencia(item1, item2);
         } catch(Exception err) { System.out.println(err + err.getMessage());  }
+    }
+    
+    private static String obtenerIniciales(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        
+        StringBuilder iniciales = new StringBuilder();
+        String[] palabras = input.split(" ");
+        
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                iniciales.append(palabra.charAt(0));
+            }
+        }
+        
+        return iniciales.toString().toUpperCase();
     }
     
     // Manejar evento del focus entrante
