@@ -12,13 +12,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import views.JDProyecto;
 
 /**
@@ -108,7 +106,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.cf8.setText("0%");
     }
     
-    // Cargar los nombres de los items
+    // Cargar los nombres de los labels de items (cobertura y confianza)
     private void cargarNombreItems() {
         String item1 = this.formulario.cmbItem1.getSelectedItem().toString();
         String item2 = this.formulario.cmbItem2.getSelectedItem().toString();
@@ -130,14 +128,11 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.lbl28.setText(item2);
     }
     
+    // Método utilizado para calcular los valores de la tabla de factor de dependencia
     private void calcularDependencia(String item1, String item2, String[][] modelo) {
         DefaultTableModel modeloDependencia = null;
         
-        System.out.println(modelo[1][1]);
-        System.out.println(modelo[1][3]);
-        System.out.println(modelo[3][1]);
-        System.out.println(modelo[3][3]);
-        
+        // Sacar los valores de celdas a trabajar
         float total = Float.parseFloat(modelo[3][3]);
         float totalV = Float.parseFloat(modelo[3][1]);
         float totalV2 = Float.parseFloat(modelo[3][2]);
@@ -148,12 +143,13 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         float valor21 = Float.parseFloat(modelo[2][1]);
         float valor22 = Float.parseFloat(modelo[2][2]);
         
+        // Calcular el factor de dependencia
         float one = (valor11 / total) / ((totalH / total) * (totalV / total));
         float two = (valor12 / total) / ((totalH / total) * (totalV2 / total));
         float three = (valor21 / total) / ((totalH2 / total) * (totalV / total));
         float four = (valor22 / total) / ((totalH2 / total) * (totalV2 / total));
         
-        // Crear el TableModel para la tabla de contingencia
+        // Crear los datos para el modelo de dependencia
         String[] nombresColumnas = new String[] {"", "", ""};
         String[][] datosDependencia = new String[3][3];
 
@@ -162,24 +158,35 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         datosDependencia[0][2] = "~ " + item2;
 
         datosDependencia[1][0] = item1;
-        datosDependencia[1][1] = String.valueOf(one);
-        datosDependencia[1][2] = String.valueOf(two);
+        datosDependencia[1][1] = String.format("%.3f", one);
+        datosDependencia[1][2] = String.format("%.3f", two);
         datosDependencia[2][0] = "~ " + item1;
-        datosDependencia[2][1] = String.valueOf(three);
-        datosDependencia[2][2] = String.valueOf(four);
+        datosDependencia[2][1] = String.format("%.3f", three);
+        datosDependencia[2][2] = String.format("%.3f", four);
+        this.formulario.lblComprar.setText("");
+        this.formulario.lblNoComprar.setText("");
         
+        if(one < two) this.formulario.lblComprar.setText("Comprar " + item1 + " disminuye la compra de " + item2);
+        else if(one > two) this.formulario.lblComprar.setText("Comprar " + item1 + " aumenta la compra de " + item2);
+        else this.formulario.lblComprar.setText("No hay dependencia entre uno y otro");
+        if(three > four) this.formulario.lblNoComprar.setText("No comprar " + item1 + " aumenta la compra de " + item2);
+        else if(three < four) this.formulario.lblNoComprar.setText("No comprar " + item1 + " disminuye la compra de " + item2);
+        else this.formulario.lblNoComprar.setText("No hay dependencia entre uno y otro");
+        
+        // Crear un modelo para la tabla de dependencia, pasandole los datos previamente asignados
         modeloDependencia = new DefaultTableModel(datosDependencia, nombresColumnas){
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Hacer que las celdas no sean editables
             }
-        };
-        
+        };        
+        // Cargar la tabla de dependencia con el modelo y actualizar la UI del programa
         this.formulario.jtDependencia.setModel(modeloDependencia);
         this.formulario.jtDependencia.revalidate();
         this.formulario.jtDependencia.repaint();
     }
     
+    // Método utilizado para calcular los valores de cobertura y confianza
     private void calcularCbCf() {
         this.cargarNombreItems();
         DefaultTableModel datos = (DefaultTableModel)this.formulario.jtContingencia.getModel();
@@ -203,6 +210,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.cf8.setText(String.valueOf((int)((Float.parseFloat((String)datos.getValueAt(2, 2)) / Float.parseFloat((String)datos.getValueAt(3, 2)) * 100))+"%"));
     }
     
+    // Método utilizado para calcular los valores de la tabla de contingencia
     private void calcularContingencia(String item1, String item2) {
         int indiceItem1 = -1;
         int indiceItem2 = -1;
@@ -216,6 +224,8 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 indiceItem2 = i;
             }
         }
+        
+        if(indiceItem1 == -1 || indiceItem2 == -1) return;
 
         // Inicializar las frecuencias
         int[][] frecuencias = new int[3][3];
@@ -242,7 +252,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         frecuencias[2][1] = frecuencias[0][1] + frecuencias[1][1];
         frecuencias[2][2] = frecuencias[0][2] + frecuencias[1][2];
 
-        // Crear el TableModel para la tabla de contingencia
+        // Crear los datos para el modelo de contingencia
         String[] nombresColumnas = new String[] {"", "", "", ""};
         String[][] datosContingencia = new String[4][4];
 
@@ -264,13 +274,16 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         datosContingencia[3][1] = String.valueOf(frecuencias[2][0]);
         datosContingencia[3][2] = String.valueOf(frecuencias[2][1]);
         datosContingencia[3][3] = String.valueOf(frecuencias[2][2]);
-
+        
+        // Crear un modelo para la tabla de contingencia con los datos previamente asignados
         DefaultTableModel modelContingencia = new DefaultTableModel(datosContingencia, nombresColumnas) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Hacer que las celdas no sean editables
             }
         };
+        
+        // Cargar la tabla de contingencia con el modelo creado
         this.formulario.jtContingencia.setModel(modelContingencia);
         this.calcularCbCf();
         this.calcularDependencia(item1, item2, datosContingencia);
@@ -279,14 +292,15 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.jtContingencia.repaint();
     }
     
+    // Método que inicia todos los cálculos
     private void cargarContingencia() {
         String item1 = "", item2 = "";
         try
         {
-            item1 = this.formulario.cmbItem1.getSelectedItem().toString();
-            item2 = this.formulario.cmbItem2.getSelectedItem().toString();
+            item1 = this.formulario.cmbItem1.getModel().getSelectedItem().toString();
+            item2 = this.formulario.cmbItem2.getModel().getSelectedItem().toString();
             this.calcularContingencia(item1, item2);
-        } catch(Exception err) { System.out.println(err);  }
+        } catch(Exception err) { System.out.println(err + err.getMessage());  }
     }
     
     // Manejar evento del focus entrante
@@ -366,7 +380,8 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
     public void mouseReleased(MouseEvent e) {
         
     }
-
+    
+    // Manejar evento cuando el mouse pasa por encima (lit solo es para ponerle el HAND cursor)
     @Override
     public void mouseEntered(MouseEvent e) {
         if(e.getSource() == this.formulario.btnLimpiarItems) {
@@ -387,10 +402,12 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
     public void mouseExited(MouseEvent e) {
         
     }
-
+    
+    // Manejar evento click
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.formulario.btnAgregar) {
+            // Validaciones
             if((this.formulario.txtItems.getText().equals("0") || this.formulario.txtItems.getText().equals("")) ||
                (this.formulario.txtInstancias.getText().equals("0") || this.formulario.txtInstancias.getText().equals(""))) {
                 JOptionPane.showMessageDialog(this.formulario, "Debes ingresar valores validos de items e instancias.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
@@ -400,6 +417,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 JOptionPane.showMessageDialog(this.formulario, "Debes ingresar un nombre de item.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
+            // Lógica
             if(this.formulario.jlItems.getModel().getSize() < Integer.parseInt(this.formulario.txtItems.getText())) {
                 Controlador.listModel.addElement(this.formulario.txtNombreItem.getText());
                 this.formulario.jlItems.setModel(Controlador.listModel);
@@ -421,15 +439,17 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             int numeroItems = Integer.parseInt(this.formulario.txtItems.getText());
             int numeroInstancias = Integer.parseInt(this.formulario.txtInstancias.getText());
             
+            // Validaciones
             if(this.formulario.jlItems.getModel().getSize() < numeroItems) {
                 JOptionPane.showMessageDialog(this.formulario, "Faltan items por ingresar.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
             
+            //Lógica
             String[] items = new String[numeroItems];
             String[][] datos = new String[numeroInstancias][numeroItems];
-            DefaultComboBoxModel modelo1 = new DefaultComboBoxModel<String>();
-            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel<String>();
+            DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
+            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
             
             for(int i = 0; i < numeroItems; i++) {
                 items[i] = this.formulario.jlItems.getModel().getElementAt(i);
@@ -442,6 +462,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 }
             }
             
+            // Creación del modelo de datos para la tabla binaria y los comboBox
             DefaultTableModel model = new DefaultTableModel(datos, items);
             this.formulario.jtDatosBinarios.setModel(model);
             this.formulario.cmbItem1.setModel(modelo1);
@@ -451,6 +472,8 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             this.formulario.cmbItem2.setEnabled(true);
             this.formulario.cmbItem2.setSelectedIndex(1);
             this.formulario.lblSeleccion.setEnabled(true);
+            // Importante, se agrega un listener al modelo para controlar cada vez que se
+            // actualiza el valor de alguna celda
             model.addTableModelListener(this);
             this.cargarContingencia();
             this.formulario.revalidate();
@@ -462,9 +485,11 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             if(this.formulario.jtDatosBinarios.getModel() == null) {
                 return;
             }
-            DefaultComboBoxModel modelo1 = new DefaultComboBoxModel<String>();
-            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel<String>();
+            // Modelos de datos para los comboBox
+            DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
+            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
             
+            // Lógica para crear los datos del modelo de la tabla binaria
             for(int i = 0; i < this.formulario.jtDatosBinarios.getModel().getColumnCount(); i++) {
                 modelo1.addElement(this.formulario.jtDatosBinarios.getModel().getColumnName(i));
                 modelo2.addElement(this.formulario.jtDatosBinarios.getModel().getColumnName(i));
@@ -483,14 +508,18 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             this.formulario.revalidate();
             this.formulario.repaint();
         }
+        // Cada vez que se cambia el item de los comboBox, recalcular todo
         if(e.getSource() == this.formulario.cmbItem1) {
-            this.cargarContingencia();
+            if(this.formulario.jtDatosBinarios.getModel() != null)
+                this.cargarContingencia();
         }
         if(e.getSource() == this.formulario.cmbItem2) {
-            this.cargarContingencia();
+            if(this.formulario.jtDatosBinarios.getModel() != null)
+                this.cargarContingencia();
         }
     }
-
+    
+    // Evento que sucede al cambiar alguna celda binaria
     @Override
     public void tableChanged(TableModelEvent e) {
         this.cargarContingencia();

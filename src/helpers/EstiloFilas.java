@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 /**
  *
  * @author yh9pl
+ * Clase utilizada para aplicar un estilo personalizado a las filas de los JTables
+ * (estilo tipo Excel, gris, blanco)
  */
 public class EstiloFilas extends DefaultTableCellRenderer {
     @Override

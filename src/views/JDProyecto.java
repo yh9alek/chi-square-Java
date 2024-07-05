@@ -2,17 +2,8 @@ package views;
 
 import controllers.Controlador;
 import helpers.EstiloFilas;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.KeyEvent;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -33,34 +24,6 @@ public class JDProyecto extends javax.swing.JDialog {
         initComponents();
         // Aplicar estilo de filas tipo Excel a la tabla
         this.jtDatosBinarios.setDefaultRenderer(Object.class, new EstiloFilas());
-        JTableHeader header = this.jtContingencia.getTableHeader();
-        header.setDefaultRenderer(new TableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                                                           boolean isSelected, boolean hasFocus, int row, int column) {
-                JLabel label = new JLabel(value.toString());
-                label.setOpaque(true);
-                label.setBackground(new Color(0xCCCCFF));
-                label.setForeground(new Color(0xCCCCFF));
-                label.setHorizontalAlignment(SwingConstants.CENTER);
-                label.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
-                return label;
-            }
-        });
-        JTableHeader headerd = this.jtDependencia.getTableHeader();
-        headerd.setDefaultRenderer(new TableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                                                           boolean isSelected, boolean hasFocus, int row, int column) {
-                JLabel label = new JLabel(value.toString());
-                label.setOpaque(true);
-                label.setBackground(new Color(0xCCCCFF));
-                label.setForeground(new Color(0xCCCCFF));
-                label.setHorizontalAlignment(SwingConstants.CENTER);
-                label.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
-                return label;
-            }
-        });
     }
 
     /**
@@ -160,8 +123,8 @@ public class JDProyecto extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         jtDependencia = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblComprar = new javax.swing.JLabel();
+        lblNoComprar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -599,15 +562,13 @@ public class JDProyecto extends javax.swing.JDialog {
         background.add(jLabel7);
         jLabel7.setBounds(560, 40, 180, 20);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jLabel9.setText("No comprar item1 aumenta la compra de item2");
-        background.add(jLabel9);
-        jLabel9.setBounds(850, 210, 250, 16);
+        lblComprar.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        background.add(lblComprar);
+        lblComprar.setBounds(850, 190, 250, 16);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jLabel11.setText("Comprar item1 disminuye la compra de item2");
-        background.add(jLabel11);
-        jLabel11.setBounds(850, 190, 250, 14);
+        lblNoComprar.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        background.add(lblNoComprar);
+        lblNoComprar.setBounds(850, 210, 250, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -672,7 +633,6 @@ public class JDProyecto extends javax.swing.JDialog {
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Aumenta el número de items para agregar más.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
-                return;
             }
         }
     }//GEN-LAST:event_txtNombreItemKeyPressed
@@ -745,7 +705,6 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JComboBox<String> cmbItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -781,7 +740,6 @@ public class JDProyecto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -806,6 +764,8 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JLabel lbl26;
     public javax.swing.JLabel lbl27;
     public javax.swing.JLabel lbl28;
+    public javax.swing.JLabel lblComprar;
+    public javax.swing.JLabel lblNoComprar;
     public javax.swing.JLabel lblSeleccion;
     public javax.swing.JTextField txtInstancias;
     public javax.swing.JTextField txtItems;
