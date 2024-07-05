@@ -238,8 +238,8 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         int[][] frecuencias = new int[3][3];
 
         for (int i = 0; i < this.formulario.jtDatosBinarios.getRowCount(); i++) {
-            int valorItem1 = Integer.parseInt((String) this.formulario.jtDatosBinarios.getValueAt(i, indiceItem1));
-            int valorItem2 = Integer.parseInt((String) this.formulario.jtDatosBinarios.getValueAt(i, indiceItem2));
+            int valorItem1 = Integer.parseInt(String.valueOf(this.formulario.jtDatosBinarios.getValueAt(i, indiceItem1)));
+            int valorItem2 = Integer.parseInt(String.valueOf(this.formulario.jtDatosBinarios.getValueAt(i, indiceItem2)));
 
             if (valorItem1 == 1 && valorItem2 == 1) {
                 frecuencias[0][0]++;
@@ -307,7 +307,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             item1 = this.formulario.cmbItem1.getModel().getSelectedItem().toString();
             item2 = this.formulario.cmbItem2.getModel().getSelectedItem().toString();
             this.calcularContingencia(item1, item2);
-        } catch(Exception err) { System.out.println(err + err.getMessage());  }
+        } catch(Exception err) { }
     }
     
     private static String obtenerIniciales(String input) {
@@ -510,7 +510,12 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         }
         if(e.getSource() == this.formulario.btnExcel) {
             this.limpiar();
-            this.formulario.jtDatosBinarios.setModel(Excel.cargar(this.formulario));
+            DefaultTableModel modelo = Excel.cargar(this.formulario);
+            if(modelo.getColumnCount() > 8) {
+                JOptionPane.showMessageDialog(this.formulario, "No se admiten tablas con más de 8 items.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            this.formulario.jtDatosBinarios.setModel(modelo);
             if(this.formulario.jtDatosBinarios.getModel() == null) {
                 return;
             }
@@ -532,6 +537,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 this.formulario.cmbItem2.setEnabled(true);
                 this.formulario.cmbItem2.setSelectedIndex(1);
                 this.formulario.lblSeleccion.setEnabled(true);
+                modelo.addTableModelListener(this);
                 this.cargarContingencia();
             } catch(Exception err) { }
             this.formulario.revalidate();
