@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.event.TableModelEvent;
@@ -52,6 +53,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
     public void iniciarVista() {
         this.formulario.setTitle("Reglas Asociación");
         this.formulario.setSize(1084, 600);
+        this.formulario.setIconImage(new ImageIcon(getClass().getResource("/sources/upsin-icon.jpg")).getImage());
         this.formulario.setLocationRelativeTo(null);
         this.formulario.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.formulario.show();
@@ -433,10 +435,12 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             if((this.formulario.txtItems.getText().equals("0") || this.formulario.txtItems.getText().equals("")) ||
                (this.formulario.txtInstancias.getText().equals("0") || this.formulario.txtInstancias.getText().equals(""))) {
                 JOptionPane.showMessageDialog(this.formulario, "Debes ingresar valores validos de items e instancias.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.formulario.txtItems.requestFocus();
                 return;
             }
             if(this.formulario.txtNombreItem.getText().equals("") || this.formulario.txtNombreItem.getText().equals("Nombre Item")) {
                 JOptionPane.showMessageDialog(this.formulario, "Debes ingresar un nombre de item.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.formulario.txtNombreItem.requestFocus();
                 return;
             }
             // Lógica
@@ -450,6 +454,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 }
             } else {
                 JOptionPane.showMessageDialog(this.formulario, "Aumenta el número de items para agregar más.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.formulario.txtItems.requestFocus();
                 return;
             }
         }
@@ -464,6 +469,8 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
             // Validaciones
             if(this.formulario.jlItems.getModel().getSize() < numeroItems) {
                 JOptionPane.showMessageDialog(this.formulario, "Faltan items por ingresar.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.formulario.txtNombreItem.setText("");
+                this.formulario.txtNombreItem.requestFocus();
                 return;
             }
             

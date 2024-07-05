@@ -2,6 +2,7 @@ package views;
 
 import controllers.Controlador;
 import helpers.EstiloFilas;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -141,6 +142,9 @@ public class JDProyecto extends javax.swing.JDialog {
         txtItems.setForeground(new java.awt.Color(153, 153, 153));
         txtItems.setText("0");
         txtItems.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtItemsKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtItemsKeyTyped(evt);
             }
@@ -157,6 +161,9 @@ public class JDProyecto extends javax.swing.JDialog {
         txtInstancias.setForeground(new java.awt.Color(153, 153, 153));
         txtInstancias.setText("0");
         txtInstancias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtInstanciasKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtInstanciasKeyTyped(evt);
             }
@@ -167,7 +174,7 @@ public class JDProyecto extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("DEPENDENCIA");
         background.add(jLabel2);
-        jLabel2.setBounds(850, 40, 180, 20);
+        jLabel2.setBounds(820, 40, 180, 20);
 
         btnLimpiarItems.setText("Limpiar Datos");
         background.add(btnLimpiarItems);
@@ -279,259 +286,259 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel5.setText("=1");
         background.add(jLabel5);
-        jLabel5.setBounds(592, 190, 40, 16);
+        jLabel5.setBounds(590, 190, 40, 16);
 
         jLabel6.setText("cf");
         background.add(jLabel6);
-        jLabel6.setBounds(760, 190, 20, 16);
+        jLabel6.setBounds(753, 190, 20, 16);
 
-        cf1.setText("0%");
+        cf1.setText("100%");
         background.add(cf1);
-        cf1.setBounds(777, 190, 40, 16);
+        cf1.setBounds(770, 190, 40, 16);
 
         jLabel8.setText("cb");
         background.add(jLabel8);
-        jLabel8.setBounds(700, 190, 20, 16);
+        jLabel8.setBounds(697, 190, 20, 16);
 
         lbl11.setText("--");
         background.add(lbl11);
-        lbl11.setBounds(560, 190, 40, 16);
+        lbl11.setBounds(560, 190, 30, 16);
 
         jLabel10.setText("=1");
         background.add(jLabel10);
-        jLabel10.setBounds(662, 190, 40, 16);
+        jLabel10.setBounds(655, 190, 40, 16);
 
         lbl21.setText("--");
         background.add(lbl21);
-        lbl21.setBounds(630, 190, 40, 16);
+        lbl21.setBounds(626, 190, 30, 16);
 
         cb1.setText("0%");
         background.add(cb1);
-        cb1.setBounds(720, 190, 40, 16);
+        cb1.setBounds(718, 190, 40, 16);
 
         lbl12.setText("--");
         background.add(lbl12);
-        lbl12.setBounds(560, 210, 40, 16);
+        lbl12.setBounds(560, 210, 30, 16);
 
         jLabel14.setText("=1");
         background.add(jLabel14);
-        jLabel14.setBounds(592, 210, 40, 16);
+        jLabel14.setBounds(590, 210, 40, 16);
 
         lbl22.setText("--");
         background.add(lbl22);
-        lbl22.setBounds(630, 210, 40, 16);
+        lbl22.setBounds(626, 210, 30, 16);
 
         jLabel16.setText("=0");
         background.add(jLabel16);
-        jLabel16.setBounds(662, 210, 40, 16);
+        jLabel16.setBounds(655, 210, 40, 16);
 
         jLabel17.setText("cb");
         background.add(jLabel17);
-        jLabel17.setBounds(700, 210, 20, 16);
+        jLabel17.setBounds(697, 210, 20, 16);
 
         cb2.setText("0%");
         background.add(cb2);
-        cb2.setBounds(720, 210, 40, 16);
+        cb2.setBounds(718, 210, 40, 16);
 
         jLabel19.setText("cf");
         background.add(jLabel19);
-        jLabel19.setBounds(760, 210, 20, 16);
+        jLabel19.setBounds(753, 210, 20, 16);
 
         cf2.setText("0%");
         background.add(cf2);
-        cf2.setBounds(777, 210, 40, 16);
+        cf2.setBounds(770, 210, 40, 16);
 
         cf3.setText("0%");
         background.add(cf3);
-        cf3.setBounds(777, 230, 40, 16);
+        cf3.setBounds(770, 230, 40, 16);
 
         jLabel22.setText("cf");
         background.add(jLabel22);
-        jLabel22.setBounds(760, 230, 20, 16);
+        jLabel22.setBounds(753, 230, 20, 16);
 
         cb3.setText("0%");
         background.add(cb3);
-        cb3.setBounds(720, 230, 40, 16);
+        cb3.setBounds(718, 230, 40, 16);
 
         jLabel24.setText("cb");
         background.add(jLabel24);
-        jLabel24.setBounds(700, 230, 20, 16);
+        jLabel24.setBounds(697, 230, 20, 16);
 
         jLabel25.setText("=1");
         background.add(jLabel25);
-        jLabel25.setBounds(662, 230, 40, 16);
+        jLabel25.setBounds(655, 230, 40, 16);
 
         lbl23.setText("--");
         background.add(lbl23);
-        lbl23.setBounds(630, 230, 40, 16);
+        lbl23.setBounds(626, 230, 30, 16);
 
         jLabel27.setText("=0");
         background.add(jLabel27);
-        jLabel27.setBounds(592, 230, 40, 16);
+        jLabel27.setBounds(590, 230, 40, 16);
 
         lbl13.setText("--");
         background.add(lbl13);
-        lbl13.setBounds(560, 230, 40, 16);
+        lbl13.setBounds(560, 230, 30, 16);
 
         cf4.setText("0%");
         background.add(cf4);
-        cf4.setBounds(777, 250, 40, 16);
+        cf4.setBounds(770, 250, 40, 16);
 
         jLabel30.setText("cf");
         background.add(jLabel30);
-        jLabel30.setBounds(760, 250, 20, 16);
+        jLabel30.setBounds(753, 250, 20, 16);
 
         cb4.setText("0%");
         background.add(cb4);
-        cb4.setBounds(720, 250, 40, 16);
+        cb4.setBounds(718, 250, 40, 16);
 
         jLabel32.setText("cb");
         background.add(jLabel32);
-        jLabel32.setBounds(700, 250, 20, 16);
+        jLabel32.setBounds(697, 250, 20, 16);
 
         jLabel33.setText("=0");
         background.add(jLabel33);
-        jLabel33.setBounds(662, 250, 40, 16);
+        jLabel33.setBounds(655, 250, 40, 16);
 
         lbl24.setText("--");
         background.add(lbl24);
-        lbl24.setBounds(630, 250, 40, 16);
+        lbl24.setBounds(626, 250, 30, 16);
 
         jLabel35.setText("=0");
         background.add(jLabel35);
-        jLabel35.setBounds(592, 250, 40, 16);
+        jLabel35.setBounds(590, 250, 40, 16);
 
         lbl14.setText("--");
         background.add(lbl14);
-        lbl14.setBounds(560, 250, 40, 16);
+        lbl14.setBounds(560, 250, 30, 16);
 
         cf5.setText("0%");
         background.add(cf5);
-        cf5.setBounds(777, 275, 40, 16);
+        cf5.setBounds(770, 275, 40, 16);
 
         jLabel38.setText("cf");
         background.add(jLabel38);
-        jLabel38.setBounds(760, 275, 20, 16);
+        jLabel38.setBounds(753, 275, 20, 16);
 
         cb5.setText("0%");
         background.add(cb5);
-        cb5.setBounds(720, 275, 40, 16);
+        cb5.setBounds(718, 275, 40, 16);
 
         jLabel40.setText("cb");
         background.add(jLabel40);
-        jLabel40.setBounds(700, 275, 20, 16);
+        jLabel40.setBounds(697, 275, 20, 16);
 
         jLabel41.setText("=1");
         background.add(jLabel41);
-        jLabel41.setBounds(662, 275, 40, 16);
+        jLabel41.setBounds(655, 275, 40, 16);
 
         lbl15.setText("--");
         background.add(lbl15);
-        lbl15.setBounds(630, 275, 40, 16);
+        lbl15.setBounds(626, 275, 30, 16);
 
         jLabel43.setText("=1");
         background.add(jLabel43);
-        jLabel43.setBounds(592, 275, 40, 16);
+        jLabel43.setBounds(590, 275, 40, 16);
 
         lbl25.setText("--");
         background.add(lbl25);
-        lbl25.setBounds(560, 275, 40, 16);
+        lbl25.setBounds(560, 275, 30, 16);
 
         lbl26.setText("--");
         background.add(lbl26);
-        lbl26.setBounds(560, 295, 40, 16);
+        lbl26.setBounds(560, 295, 30, 16);
 
         jLabel46.setText("=1");
         background.add(jLabel46);
-        jLabel46.setBounds(592, 295, 40, 16);
+        jLabel46.setBounds(590, 295, 40, 16);
 
         lbl16.setText("--");
         background.add(lbl16);
-        lbl16.setBounds(630, 295, 40, 16);
+        lbl16.setBounds(626, 295, 30, 16);
 
         jLabel48.setText("=0");
         background.add(jLabel48);
-        jLabel48.setBounds(662, 295, 40, 16);
+        jLabel48.setBounds(655, 295, 40, 16);
 
         jLabel49.setText("cb");
         background.add(jLabel49);
-        jLabel49.setBounds(700, 295, 20, 16);
+        jLabel49.setBounds(697, 295, 20, 16);
 
         cb6.setText("0%");
         background.add(cb6);
-        cb6.setBounds(720, 295, 40, 16);
+        cb6.setBounds(718, 295, 40, 16);
 
         jLabel51.setText("cf");
         background.add(jLabel51);
-        jLabel51.setBounds(760, 295, 20, 16);
+        jLabel51.setBounds(753, 295, 20, 16);
 
         cf6.setText("0%");
         background.add(cf6);
-        cf6.setBounds(777, 295, 40, 16);
+        cf6.setBounds(770, 295, 40, 16);
 
         jLabel53.setText("cb");
         background.add(jLabel53);
-        jLabel53.setBounds(700, 315, 20, 16);
+        jLabel53.setBounds(697, 315, 20, 16);
 
         lbl27.setText("--");
         background.add(lbl27);
-        lbl27.setBounds(560, 315, 40, 16);
+        lbl27.setBounds(560, 315, 30, 16);
 
         cb7.setText("0%");
         background.add(cb7);
-        cb7.setBounds(720, 315, 40, 16);
+        cb7.setBounds(718, 315, 40, 16);
 
         cf7.setText("0%");
         background.add(cf7);
-        cf7.setBounds(777, 315, 40, 16);
+        cf7.setBounds(770, 315, 40, 16);
 
         jLabel57.setText("=1");
         background.add(jLabel57);
-        jLabel57.setBounds(662, 315, 40, 16);
+        jLabel57.setBounds(655, 315, 40, 16);
 
         lbl17.setText("--");
         background.add(lbl17);
-        lbl17.setBounds(630, 315, 40, 16);
+        lbl17.setBounds(626, 315, 30, 16);
 
         jLabel59.setText("=0");
         background.add(jLabel59);
-        jLabel59.setBounds(592, 315, 40, 16);
+        jLabel59.setBounds(590, 315, 40, 16);
 
         jLabel60.setText("cf");
         background.add(jLabel60);
-        jLabel60.setBounds(760, 315, 20, 16);
+        jLabel60.setBounds(753, 315, 20, 16);
 
         jLabel61.setText("cf");
         background.add(jLabel61);
-        jLabel61.setBounds(760, 335, 20, 16);
+        jLabel61.setBounds(753, 335, 20, 16);
 
         cb8.setText("0%");
         background.add(cb8);
-        cb8.setBounds(720, 335, 40, 16);
+        cb8.setBounds(718, 335, 40, 16);
 
         cf8.setText("0%");
         background.add(cf8);
-        cf8.setBounds(777, 335, 40, 16);
+        cf8.setBounds(770, 335, 40, 16);
 
         lbl18.setText("--");
         background.add(lbl18);
-        lbl18.setBounds(630, 335, 40, 16);
+        lbl18.setBounds(626, 335, 30, 16);
 
         jLabel65.setText("=0");
         background.add(jLabel65);
-        jLabel65.setBounds(592, 335, 40, 16);
+        jLabel65.setBounds(590, 335, 40, 16);
 
         lbl28.setText("--");
         background.add(lbl28);
-        lbl28.setBounds(560, 335, 40, 16);
+        lbl28.setBounds(560, 335, 30, 16);
 
         jLabel67.setText("=0");
         background.add(jLabel67);
-        jLabel67.setBounds(662, 335, 40, 16);
+        jLabel67.setBounds(655, 335, 40, 16);
 
         jLabel68.setText("cb");
         background.add(jLabel68);
-        jLabel68.setBounds(700, 335, 20, 16);
+        jLabel68.setBounds(697, 335, 20, 16);
 
         jtDependencia.setBackground(new java.awt.Color(204, 204, 255));
         jtDependencia.setModel(new javax.swing.table.DefaultTableModel(
@@ -555,7 +562,7 @@ public class JDProyecto extends javax.swing.JDialog {
         jScrollPane4.setViewportView(jtDependencia);
 
         background.add(jScrollPane4);
-        jScrollPane4.setBounds(850, 70, 190, 110);
+        jScrollPane4.setBounds(820, 70, 190, 110);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("TABLA DE CONTINGENCIA");
@@ -564,11 +571,11 @@ public class JDProyecto extends javax.swing.JDialog {
 
         lblComprar.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         background.add(lblComprar);
-        lblComprar.setBounds(850, 190, 250, 16);
+        lblComprar.setBounds(820, 190, 250, 16);
 
         lblNoComprar.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         background.add(lblNoComprar);
-        lblNoComprar.setBounds(850, 210, 250, 16);
+        lblNoComprar.setBounds(820, 210, 250, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -616,10 +623,12 @@ public class JDProyecto extends javax.swing.JDialog {
             if((this.txtItems.getText().equals("0") || this.txtItems.getText().equals("")) ||
                (this.txtInstancias.getText().equals("0") || this.txtInstancias.getText().equals(""))) {
                 JOptionPane.showMessageDialog(this, "Debes ingresar valores validos de items e instancias.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.txtItems.requestFocus();
                 return;
             }
             if(this.txtNombreItem.getText().equals("") || this.txtNombreItem.getText().equals("Nombre Item")) {
                 JOptionPane.showMessageDialog(this, "Debes ingresar un nombre de item.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.txtNombreItem.requestFocus();
                 return;
             }
             if(this.jlItems.getModel().getSize() < Integer.parseInt(this.txtItems.getText())) {
@@ -633,9 +642,39 @@ public class JDProyecto extends javax.swing.JDialog {
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Aumenta el número de items para agregar más.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                this.txtItems.requestFocus();
             }
         }
     }//GEN-LAST:event_txtNombreItemKeyPressed
+
+    private void txtItemsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtItemsKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if(this.txtItems.getText().equals("") ||
+               this.txtItems.getText().equals("0")) {
+                this.txtItems.setForeground(new Color(0x999999));
+                this.txtItems.setBackground(new Color(0xFFFFFF));
+                this.txtItems.setText("0");
+            } else {
+                this.txtItems.setBackground(new Color(0xFBF7E8));
+            }
+            this.txtInstancias.requestFocus();
+        }
+    }//GEN-LAST:event_txtItemsKeyPressed
+
+    private void txtInstanciasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInstanciasKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if(this.txtInstancias.getText().equals("") ||
+               this.txtInstancias.getText().equals("0")) {
+                this.txtInstancias.setForeground(new Color(0x999999));
+                this.txtInstancias.setBackground(new Color(0xFFFFFF));
+                this.txtInstancias.setText("0");
+            } else {
+                this.txtInstancias.setBackground(new Color(0xFBF7E8));
+            }
+            this.txtNombreItem.requestFocus();
+        }
+    }//GEN-LAST:event_txtInstanciasKeyPressed
 
     /**
      * @param args the command line arguments
