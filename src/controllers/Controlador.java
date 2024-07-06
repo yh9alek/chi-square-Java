@@ -518,6 +518,10 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
                 JOptionPane.showMessageDialog(this.formulario, "No se admiten tablas con más de 8 items.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
+            if(modelo.getColumnCount() < 2) {
+                JOptionPane.showMessageDialog(this.formulario, "Debe haber mínimo 2 items en la tabla.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             this.formulario.jtDatosBinarios.setModel(modelo);
             // Modelos de datos para los comboBox
             DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
