@@ -52,7 +52,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
     // Iniciar el formulario
     public void iniciarVista() {
         this.formulario.setTitle("Reglas Asociación");
-        this.formulario.setSize(1084, 600);
+        this.formulario.setSize(1084, 540);
         this.formulario.setIconImage(new ImageIcon(getClass().getResource("/sources/upsin-icon.jpg")).getImage());
         this.formulario.setLocationRelativeTo(null);
         this.formulario.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -107,8 +107,13 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.cf6.setText("--%");
         this.formulario.cf7.setText("--%");
         this.formulario.cf8.setText("--%");
-        this.formulario.lblComprar.setText("");
-        this.formulario.lblNoComprar.setText("");
+        this.formulario.lblComprar.setText("--");
+        this.formulario.lblNoComprar.setText("--");
+        this.formulario.lblDescChi.setText("--");
+        this.formulario.lblChi.setText("--");
+        this.formulario.lbl05.setText("--");
+        this.formulario.lbl01.setText("--");
+        this.formulario.lbl001.setText("--");
     }
     
     // Cargar los nombres de los labels de items (cobertura y confianza)
@@ -131,6 +136,42 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.lbl26.setText(Controlador.obtenerIniciales(item2));
         this.formulario.lbl27.setText(Controlador.obtenerIniciales(item2));
         this.formulario.lbl28.setText(Controlador.obtenerIniciales(item2));
+    }
+    
+    // Método para el cálculo del Chi cuadrado y p valor
+    private void calcularChiSquare(String[][] modelo) {
+        // Sacar los valores de celdas a trabajar
+        float total = Float.parseFloat(modelo[3][3]);
+        float totalH1 = Float.parseFloat(modelo[1][3]);
+        float totalH2 = Float.parseFloat(modelo[2][3]);
+        float totalV1 = Float.parseFloat(modelo[3][1]);
+        float totalV2 = Float.parseFloat(modelo[3][2]);
+        float valor11 = Float.parseFloat(modelo[1][1]);
+        float valor12 = Float.parseFloat(modelo[1][2]);
+        float valor21 = Float.parseFloat(modelo[2][1]);
+        float valor22 = Float.parseFloat(modelo[2][2]);
+        float one = (float)Math.pow(2, Math.abs(((totalH1 * totalV1) / total) - valor11)) / ((totalH1 * totalV1) / total);
+        float two = (float)Math.pow(2, Math.abs(((totalH1 * totalV2) / total) - valor12)) / ((totalH1 * totalV2) / total);
+        float three = (float)Math.pow(2, Math.abs(((totalH2 * totalV1) / total) - valor21)) / ((totalH2 * totalV1) / total);
+        float four = (float)Math.pow(2, Math.abs(((totalH2 * totalV2) / total) - valor22)) / ((totalH2 * totalV2) / total);
+        float chi = one + two + three + four;
+        this.formulario.lblDescChi.setText("Resultado Chi-Cuadrado:");
+        this.formulario.lblChi.setText(String.format("%.2f", chi));
+        if(chi > 3.84f) {
+            this.formulario.lbl05.setText("Los items son dependientes con un 95% de confianza.");
+        } else {
+            this.formulario.lbl05.setText("No es posible afirmar con un 95% de confianza una dependencia significativa.");
+        }
+        if(chi > 6.63f) {
+            this.formulario.lbl01.setText("Los items son dependientes con un 99% de confianza.");
+        } else {
+            this.formulario.lbl01.setText("No es posible afirmar con un 99% de confianza una dependencia significativa.");
+        }
+        if(chi > 10.82f) {
+            this.formulario.lbl001.setText("Los items son dependientes con un 99.99% de confianza.");
+        } else {
+            this.formulario.lbl001.setText("No es posible afirmar con un 99.99% de confianza una dependencia significativa.");
+        }
     }
     
     // Método utilizado para calcular los valores de la tabla de factor de dependencia
@@ -294,6 +335,7 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         this.formulario.jtContingencia.setModel(modelContingencia);
         this.calcularCbCf();
         this.calcularDependencia(item1, item2, datosContingencia);
+        this.calcularChiSquare(datosContingencia);
         this.formulario.jtContingencia.getTableHeader().repaint();
         this.formulario.jtContingencia.revalidate();
         this.formulario.jtContingencia.repaint();

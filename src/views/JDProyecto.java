@@ -3,8 +3,15 @@ package views;
 import controllers.Controlador;
 import helpers.EstiloFilas;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -25,6 +32,42 @@ public class JDProyecto extends javax.swing.JDialog {
         initComponents();
         // Aplicar estilo de filas tipo Excel a la tabla
         this.jtDatosBinarios.setDefaultRenderer(Object.class, new EstiloFilas());
+        JTableHeader header = this.jtDistribucion.getTableHeader();
+        header.setDefaultRenderer(new CustomHeaderRenderer(header.getDefaultRenderer()));
+        // Personalizar el renderer para centrar las celdas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer(){
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                                                           boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                setHorizontalAlignment(JLabel.CENTER);
+                setBorder(new EmptyBorder(20, 10, 10, 10)); // Establecer el padding (arriba, izquierda, abajo, derecha)
+                return this;
+            }
+        };
+
+        // Aplicar el renderer a todas las columnas de la tabla
+        for (int i = 0; i < this.jtDistribucion.getColumnCount(); i++) {
+            this.jtDistribucion.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+    }
+    
+    // Clase estática para personalizar el renderer del header
+    static class CustomHeaderRenderer implements TableCellRenderer {
+        private final TableCellRenderer delegate;
+
+        public CustomHeaderRenderer(TableCellRenderer delegate) {
+            this.delegate = delegate;
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                                                       boolean isSelected, boolean hasFocus, int row, int column) {
+            Component c = delegate.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            c.setBackground(new Color(0xFFFF99)); // Cambia el color de fondo aquí
+            c.setForeground(Color.BLACK); // Cambia el color del texto aquí si es necesario
+            return c;
+        }
     }
 
     /**
@@ -126,6 +169,18 @@ public class JDProyecto extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         lblComprar = new javax.swing.JLabel();
         lblNoComprar = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtDistribucion = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        lblDescChi = new javax.swing.JLabel();
+        lblChi = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lbl001 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        lbl05 = new javax.swing.JLabel();
+        lbl01 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -154,6 +209,7 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Items");
+        jLabel1.setFocusable(false);
         background.add(jLabel1);
         jLabel1.setBounds(20, 40, 80, 20);
 
@@ -172,9 +228,10 @@ public class JDProyecto extends javax.swing.JDialog {
         txtInstancias.setBounds(100, 70, 70, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("DEPENDENCIA");
+        jLabel2.setText("RESUMEN FINAL");
+        jLabel2.setFocusable(false);
         background.add(jLabel2);
-        jLabel2.setBounds(820, 40, 180, 20);
+        jLabel2.setBounds(560, 380, 180, 20);
 
         btnLimpiarItems.setText("Limpiar Datos");
         background.add(btnLimpiarItems);
@@ -238,6 +295,7 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Instancias");
+        jLabel3.setFocusable(false);
         background.add(jLabel3);
         jLabel3.setBounds(100, 40, 80, 20);
 
@@ -251,6 +309,7 @@ public class JDProyecto extends javax.swing.JDialog {
 
         lblSeleccion.setText("Seleccionar Items:");
         lblSeleccion.setEnabled(false);
+        lblSeleccion.setFocusable(false);
         background.add(lblSeleccion);
         lblSeleccion.setBounds(220, 325, 100, 16);
 
@@ -281,262 +340,327 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("TABLA BINARIA");
+        jLabel4.setFocusable(false);
         background.add(jLabel4);
         jLabel4.setBounds(180, 40, 110, 20);
 
         jLabel5.setText("=1");
+        jLabel5.setFocusable(false);
         background.add(jLabel5);
         jLabel5.setBounds(590, 190, 40, 16);
 
         jLabel6.setText("cf");
+        jLabel6.setFocusable(false);
         background.add(jLabel6);
         jLabel6.setBounds(753, 190, 20, 16);
 
-        cf1.setText("100%");
+        cf1.setText("--%");
+        cf1.setFocusable(false);
         background.add(cf1);
         cf1.setBounds(770, 190, 40, 16);
 
         jLabel8.setText("cb");
+        jLabel8.setFocusable(false);
         background.add(jLabel8);
         jLabel8.setBounds(697, 190, 20, 16);
 
         lbl11.setText("--");
+        lbl11.setFocusable(false);
         background.add(lbl11);
         lbl11.setBounds(560, 190, 30, 16);
 
         jLabel10.setText("=1");
+        jLabel10.setFocusable(false);
         background.add(jLabel10);
         jLabel10.setBounds(655, 190, 40, 16);
 
         lbl21.setText("--");
+        lbl21.setFocusable(false);
         background.add(lbl21);
         lbl21.setBounds(626, 190, 30, 16);
 
-        cb1.setText("0%");
+        cb1.setText("--%");
+        cb1.setFocusable(false);
         background.add(cb1);
         cb1.setBounds(718, 190, 40, 16);
 
         lbl12.setText("--");
+        lbl12.setFocusable(false);
         background.add(lbl12);
         lbl12.setBounds(560, 210, 30, 16);
 
         jLabel14.setText("=1");
+        jLabel14.setFocusable(false);
         background.add(jLabel14);
         jLabel14.setBounds(590, 210, 40, 16);
 
         lbl22.setText("--");
+        lbl22.setFocusable(false);
         background.add(lbl22);
         lbl22.setBounds(626, 210, 30, 16);
 
         jLabel16.setText("=0");
+        jLabel16.setFocusable(false);
         background.add(jLabel16);
         jLabel16.setBounds(655, 210, 40, 16);
 
         jLabel17.setText("cb");
+        jLabel17.setFocusable(false);
         background.add(jLabel17);
         jLabel17.setBounds(697, 210, 20, 16);
 
-        cb2.setText("0%");
+        cb2.setText("--%");
+        cb2.setFocusable(false);
         background.add(cb2);
         cb2.setBounds(718, 210, 40, 16);
 
         jLabel19.setText("cf");
+        jLabel19.setFocusable(false);
         background.add(jLabel19);
         jLabel19.setBounds(753, 210, 20, 16);
 
-        cf2.setText("0%");
+        cf2.setText("--%");
+        cf2.setFocusable(false);
         background.add(cf2);
         cf2.setBounds(770, 210, 40, 16);
 
-        cf3.setText("0%");
+        cf3.setText("--%");
+        cf3.setFocusable(false);
         background.add(cf3);
         cf3.setBounds(770, 230, 40, 16);
 
         jLabel22.setText("cf");
+        jLabel22.setFocusable(false);
         background.add(jLabel22);
         jLabel22.setBounds(753, 230, 20, 16);
 
-        cb3.setText("0%");
+        cb3.setText("--%");
+        cb3.setFocusable(false);
         background.add(cb3);
         cb3.setBounds(718, 230, 40, 16);
 
         jLabel24.setText("cb");
+        jLabel24.setFocusable(false);
         background.add(jLabel24);
         jLabel24.setBounds(697, 230, 20, 16);
 
         jLabel25.setText("=1");
+        jLabel25.setFocusable(false);
         background.add(jLabel25);
         jLabel25.setBounds(655, 230, 40, 16);
 
         lbl23.setText("--");
+        lbl23.setFocusable(false);
         background.add(lbl23);
         lbl23.setBounds(626, 230, 30, 16);
 
         jLabel27.setText("=0");
+        jLabel27.setFocusable(false);
         background.add(jLabel27);
         jLabel27.setBounds(590, 230, 40, 16);
 
         lbl13.setText("--");
+        lbl13.setFocusable(false);
         background.add(lbl13);
         lbl13.setBounds(560, 230, 30, 16);
 
-        cf4.setText("0%");
+        cf4.setText("--%");
+        cf4.setFocusable(false);
         background.add(cf4);
         cf4.setBounds(770, 250, 40, 16);
 
         jLabel30.setText("cf");
+        jLabel30.setFocusable(false);
         background.add(jLabel30);
         jLabel30.setBounds(753, 250, 20, 16);
 
-        cb4.setText("0%");
+        cb4.setText("--%");
+        cb4.setFocusable(false);
         background.add(cb4);
         cb4.setBounds(718, 250, 40, 16);
 
         jLabel32.setText("cb");
+        jLabel32.setFocusable(false);
         background.add(jLabel32);
         jLabel32.setBounds(697, 250, 20, 16);
 
         jLabel33.setText("=0");
+        jLabel33.setFocusable(false);
         background.add(jLabel33);
         jLabel33.setBounds(655, 250, 40, 16);
 
         lbl24.setText("--");
+        lbl24.setFocusable(false);
         background.add(lbl24);
         lbl24.setBounds(626, 250, 30, 16);
 
         jLabel35.setText("=0");
+        jLabel35.setFocusable(false);
         background.add(jLabel35);
         jLabel35.setBounds(590, 250, 40, 16);
 
         lbl14.setText("--");
+        lbl14.setFocusable(false);
         background.add(lbl14);
         lbl14.setBounds(560, 250, 30, 16);
 
-        cf5.setText("0%");
+        cf5.setText("--%");
+        cf5.setFocusable(false);
         background.add(cf5);
         cf5.setBounds(770, 275, 40, 16);
 
         jLabel38.setText("cf");
+        jLabel38.setFocusable(false);
         background.add(jLabel38);
         jLabel38.setBounds(753, 275, 20, 16);
 
-        cb5.setText("0%");
+        cb5.setText("--%");
+        cb5.setFocusable(false);
         background.add(cb5);
         cb5.setBounds(718, 275, 40, 16);
 
         jLabel40.setText("cb");
+        jLabel40.setFocusable(false);
         background.add(jLabel40);
         jLabel40.setBounds(697, 275, 20, 16);
 
         jLabel41.setText("=1");
+        jLabel41.setFocusable(false);
         background.add(jLabel41);
         jLabel41.setBounds(655, 275, 40, 16);
 
         lbl15.setText("--");
+        lbl15.setFocusable(false);
         background.add(lbl15);
         lbl15.setBounds(626, 275, 30, 16);
 
         jLabel43.setText("=1");
+        jLabel43.setFocusable(false);
         background.add(jLabel43);
         jLabel43.setBounds(590, 275, 40, 16);
 
         lbl25.setText("--");
+        lbl25.setFocusable(false);
         background.add(lbl25);
         lbl25.setBounds(560, 275, 30, 16);
 
         lbl26.setText("--");
+        lbl26.setFocusable(false);
         background.add(lbl26);
         lbl26.setBounds(560, 295, 30, 16);
 
         jLabel46.setText("=1");
+        jLabel46.setFocusable(false);
         background.add(jLabel46);
         jLabel46.setBounds(590, 295, 40, 16);
 
         lbl16.setText("--");
+        lbl16.setFocusable(false);
         background.add(lbl16);
         lbl16.setBounds(626, 295, 30, 16);
 
         jLabel48.setText("=0");
+        jLabel48.setFocusable(false);
         background.add(jLabel48);
         jLabel48.setBounds(655, 295, 40, 16);
 
         jLabel49.setText("cb");
+        jLabel49.setFocusable(false);
         background.add(jLabel49);
         jLabel49.setBounds(697, 295, 20, 16);
 
-        cb6.setText("0%");
+        cb6.setText("--%");
+        cb6.setFocusable(false);
         background.add(cb6);
         cb6.setBounds(718, 295, 40, 16);
 
         jLabel51.setText("cf");
+        jLabel51.setFocusable(false);
         background.add(jLabel51);
         jLabel51.setBounds(753, 295, 20, 16);
 
-        cf6.setText("0%");
+        cf6.setText("--%");
+        cf6.setFocusable(false);
         background.add(cf6);
         cf6.setBounds(770, 295, 40, 16);
 
         jLabel53.setText("cb");
+        jLabel53.setFocusable(false);
         background.add(jLabel53);
         jLabel53.setBounds(697, 315, 20, 16);
 
         lbl27.setText("--");
+        lbl27.setFocusable(false);
         background.add(lbl27);
         lbl27.setBounds(560, 315, 30, 16);
 
-        cb7.setText("0%");
+        cb7.setText("--%");
+        cb7.setFocusable(false);
         background.add(cb7);
         cb7.setBounds(718, 315, 40, 16);
 
-        cf7.setText("0%");
+        cf7.setText("--%");
+        cf7.setFocusable(false);
         background.add(cf7);
         cf7.setBounds(770, 315, 40, 16);
 
         jLabel57.setText("=1");
+        jLabel57.setFocusable(false);
         background.add(jLabel57);
         jLabel57.setBounds(655, 315, 40, 16);
 
         lbl17.setText("--");
+        lbl17.setFocusable(false);
         background.add(lbl17);
         lbl17.setBounds(626, 315, 30, 16);
 
         jLabel59.setText("=0");
+        jLabel59.setFocusable(false);
         background.add(jLabel59);
         jLabel59.setBounds(590, 315, 40, 16);
 
         jLabel60.setText("cf");
+        jLabel60.setFocusable(false);
         background.add(jLabel60);
         jLabel60.setBounds(753, 315, 20, 16);
 
         jLabel61.setText("cf");
+        jLabel61.setFocusable(false);
         background.add(jLabel61);
         jLabel61.setBounds(753, 335, 20, 16);
 
-        cb8.setText("0%");
+        cb8.setText("--%");
+        cb8.setFocusable(false);
         background.add(cb8);
         cb8.setBounds(718, 335, 40, 16);
 
-        cf8.setText("0%");
+        cf8.setText("--%");
+        cf8.setFocusable(false);
         background.add(cf8);
         cf8.setBounds(770, 335, 40, 16);
 
         lbl18.setText("--");
+        lbl18.setFocusable(false);
         background.add(lbl18);
         lbl18.setBounds(626, 335, 30, 16);
 
         jLabel65.setText("=0");
+        jLabel65.setFocusable(false);
         background.add(jLabel65);
         jLabel65.setBounds(590, 335, 40, 16);
 
         lbl28.setText("--");
+        lbl28.setFocusable(false);
         background.add(lbl28);
         lbl28.setBounds(560, 335, 30, 16);
 
         jLabel67.setText("=0");
+        jLabel67.setFocusable(false);
         background.add(jLabel67);
         jLabel67.setBounds(655, 335, 40, 16);
 
         jLabel68.setText("cb");
+        jLabel68.setFocusable(false);
         background.add(jLabel68);
         jLabel68.setBounds(697, 335, 20, 16);
 
@@ -566,16 +690,102 @@ public class JDProyecto extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("TABLA DE CONTINGENCIA");
+        jLabel7.setFocusable(false);
         background.add(jLabel7);
         jLabel7.setBounds(560, 40, 180, 20);
 
-        lblComprar.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        lblComprar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblComprar.setText("--");
+        lblComprar.setFocusable(false);
         background.add(lblComprar);
         lblComprar.setBounds(820, 190, 250, 16);
 
-        lblNoComprar.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        lblNoComprar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblNoComprar.setText("--");
+        lblNoComprar.setFocusable(false);
         background.add(lblNoComprar);
         lblNoComprar.setBounds(820, 210, 250, 16);
+
+        jtDistribucion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"10.82", "6.63", "3.84"}
+            },
+            new String [] {
+                "0.001", "0.01", "0.05"
+            }
+        ));
+        jtDistribucion.setFocusable(false);
+        jtDistribucion.setGridColor(new java.awt.Color(255, 255, 255));
+        jtDistribucion.setRowSelectionAllowed(false);
+        jtDistribucion.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        jtDistribucion.setShowVerticalLines(true);
+        jtDistribucion.getTableHeader().setResizingAllowed(false);
+        jtDistribucion.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(jtDistribucion);
+
+        background.add(jScrollPane5);
+        jScrollPane5.setBounds(820, 290, 190, 60);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("DEPENDENCIA");
+        jLabel9.setFocusable(false);
+        background.add(jLabel9);
+        jLabel9.setBounds(820, 40, 180, 20);
+
+        lblDescChi.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        lblDescChi.setText("--");
+        lblDescChi.setFocusable(false);
+        background.add(lblDescChi);
+        lblDescChi.setBounds(820, 230, 120, 16);
+
+        lblChi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblChi.setForeground(new java.awt.Color(255, 51, 51));
+        lblChi.setText("--");
+        lblChi.setFocusable(false);
+        background.add(lblChi);
+        lblChi.setBounds(945, 229, 120, 16);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setText("p < 0.001: ");
+        jLabel11.setFocusable(false);
+        jLabel11.setOpaque(true);
+        background.add(jLabel11);
+        jLabel11.setBounds(560, 450, 60, 16);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setText("VALORES CRÍTICOS");
+        jLabel12.setFocusable(false);
+        background.add(jLabel12);
+        jLabel12.setBounds(820, 260, 180, 20);
+
+        lbl001.setText("--");
+        lbl001.setFocusable(false);
+        background.add(lbl001);
+        lbl001.setBounds(625, 448, 440, 20);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("p < 0.01: ");
+        jLabel15.setFocusable(false);
+        jLabel15.setOpaque(true);
+        background.add(jLabel15);
+        jLabel15.setBounds(566, 430, 60, 16);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel18.setText("p < 0.05: ");
+        jLabel18.setFocusable(false);
+        jLabel18.setOpaque(true);
+        background.add(jLabel18);
+        jLabel18.setBounds(566, 410, 60, 16);
+
+        lbl05.setText("--");
+        lbl05.setFocusable(false);
+        background.add(lbl05);
+        lbl05.setBounds(625, 408, 440, 20);
+
+        lbl01.setText("--");
+        lbl01.setFocusable(false);
+        background.add(lbl01);
+        lbl01.setBounds(625, 428, 440, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -744,9 +954,13 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JComboBox<String> cmbItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -779,14 +993,20 @@ public class JDProyecto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     public javax.swing.JList<String> jlItems;
     public javax.swing.JTable jtContingencia;
     public javax.swing.JTable jtDatosBinarios;
     public javax.swing.JTable jtDependencia;
+    public javax.swing.JTable jtDistribucion;
+    public javax.swing.JLabel lbl001;
+    public javax.swing.JLabel lbl01;
+    public javax.swing.JLabel lbl05;
     public javax.swing.JLabel lbl11;
     public javax.swing.JLabel lbl12;
     public javax.swing.JLabel lbl13;
@@ -803,7 +1023,9 @@ public class JDProyecto extends javax.swing.JDialog {
     public javax.swing.JLabel lbl26;
     public javax.swing.JLabel lbl27;
     public javax.swing.JLabel lbl28;
+    public javax.swing.JLabel lblChi;
     public javax.swing.JLabel lblComprar;
+    public javax.swing.JLabel lblDescChi;
     public javax.swing.JLabel lblNoComprar;
     public javax.swing.JLabel lblSeleccion;
     public javax.swing.JTextField txtInstancias;
