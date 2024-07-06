@@ -511,14 +511,14 @@ public class Controlador implements MouseListener, FocusListener, ActionListener
         if(e.getSource() == this.formulario.btnExcel) {
             this.limpiar();
             DefaultTableModel modelo = Excel.cargar(this.formulario);
+            if(modelo == null) {
+                return;
+            }
             if(modelo.getColumnCount() > 8) {
                 JOptionPane.showMessageDialog(this.formulario, "No se admiten tablas con más de 8 items.", "Reglas de Asociación", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
             this.formulario.jtDatosBinarios.setModel(modelo);
-            if(this.formulario.jtDatosBinarios.getModel() == null) {
-                return;
-            }
             // Modelos de datos para los comboBox
             DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
             DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();

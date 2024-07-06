@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
@@ -30,6 +31,10 @@ public class Excel {
         int result = fileChooser.showOpenDialog(formulario);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
+            if (!isValidExcelFile(selectedFile)) {
+                JOptionPane.showMessageDialog(formulario, "El archivo proporcionado NO es un Excel.", "Reglas Asociación", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
             try (FileInputStream fis = new FileInputStream(selectedFile);
                 Workbook workbook = new XSSFWorkbook(fis)) {
                 Sheet sheet = workbook.getSheetAt(0);
@@ -73,5 +78,16 @@ public class Excel {
             }
         }
         return tableModel;
+    }
+    
+    // Método para verificar si el archivo cargado es un archivo Excel válido
+    private static boolean isValidExcelFile(File file) {
+        try (FileInputStream fis = new FileInputStream(file)) {
+            Workbook workbook = WorkbookFactory.create(fis);
+            workbook.close();
+            return true;
+        } catch (Exception err) {
+            return false;
+        }
     }
 }
